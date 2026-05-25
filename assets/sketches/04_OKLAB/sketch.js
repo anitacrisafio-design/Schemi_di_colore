@@ -2,6 +2,21 @@ function setup() {
 	createCanvas(windowWidth, windowHeight)
 }
 
+  // Bottone fullscreen
+  fullscreenButton = createButton("FULLSCREEN");
+
+  fullscreenButton.position(20, 20);
+
+  fullscreenButton.style("background", "#111");
+  fullscreenButton.style("color", "white");
+  fullscreenButton.style("border", "1px solid white");
+  fullscreenButton.style("padding", "10px 16px");
+  fullscreenButton.style("cursor", "pointer");
+
+  fullscreenButton.mousePressed(toggleFullscreen);
+
+  textFont("Arial");
+
 function toggleFullscreen() {
 
   let fs = fullscreen();
