@@ -19,11 +19,10 @@ let gradients = [];
 let selectedText = "";
 
 
-// I 3 schemi colore
-// I RETTANGOLI SARANNO SEMPRE 3
+// I 2 schemi colore
+// I RETTANGOLI SARANNO SEMPRE 2
 const gradientTypes = [
   "sRGB",
-  "HSV",
   "OKLab"
 ];
 
@@ -102,7 +101,7 @@ function draw() {
 
 
 
-  // Disegna SEMPRE E SOLO 3 rettangoli
+  // Disegna SEMPRE E SOLO 2 rettangoli
   for (let g of gradients) {
 
     drawGradientRect(g);
@@ -188,31 +187,32 @@ function generateColors() {
   );
 }
 
-// CREA I 3 RETTANGOLI
+// CREA I 2 RETTANGOLI
 function generateGradients() {
 
   gradients = [];
 
-  // Mischia casualmente i 3 schemi
+  // Mischia casualmente i 2 schemi
   let shuffled = shuffle([...gradientTypes]);
 
   // Rettangoli lunghi e stretti
-  const rectW = width * 0.22;
-  const rectH = 70;
+  const rectW = width * 0.40;
+  const rectH = 130;
 
   // Spazio tra rettangoli
-  const spacing = width * 0.04;
+  const spacing = width * 0.08;
 
   // Larghezza totale
   const totalWidth =
-    rectW * 3 + spacing * 2;
+    rectW * 2 + spacing;
 
   // Posizione iniziale
   const startX =
     (width - totalWidth) / 2;
+  
 
-  // CREA SEMPRE 3 RETTANGOLI
-  for (let i = 0; i < 3; i++) {
+  // CREA SEMPRE 2 RETTANGOLI
+  for (let i = 0; i < 2; i++) {
 
     gradients.push({
 
@@ -288,32 +288,6 @@ function interpolateSRGB(t) {
     colorB,
     t
   );
-}
-
-// HSV
-function interpolateHSV(t) {
-
-  push();
-
-  colorMode(HSB, 360, 100, 100);
-
-  let h1 = hue(colorA);
-  let s1 = saturation(colorA);
-  let v1 = brightness(colorA);
-
-  let h2 = hue(colorB);
-  let s2 = saturation(colorB);
-  let v2 = brightness(colorB);
-
-  let h = lerp(h1, h2, t);
-  let s = lerp(s1, s2, t);
-  let v = lerp(v1, v2, t);
-
-  let c = color(h, s, v);
-
-  pop();
-
-  return c;
 }
 
 // OKLAB
