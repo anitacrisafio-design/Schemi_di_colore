@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Titolo Pagina</title>
+
+	<meta name="author" content="Nome Cognome">
+	<meta name="description" content="Descrizione">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="./assets/css/main.css">
+
+	<!-- p5.js -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+
+	<!-- chroma.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const accordionButtons = document.querySelectorAll('.accordion-button');
+
+			accordionButtons.forEach(button => {
+				button.addEventListener('click', function () {
+					const content = this.nextElementSibling;
+					const isActive = content.classList.contains('active');
+
+					// Close all accordions
+					document.querySelectorAll('.accordion-content.active').forEach(el => {
+						el.classList.remove('active');
+					});
+					document.querySelectorAll('.accordion-button.active').forEach(btn => {
+						btn.classList.remove('active');
+					});
+
+					// Open clicked accordion if it was closed
+					if (!isActive) {
+						content.classList.add('active');
+						this.classList.add('active');
+					}
+				});
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<main class="contenitore">
+
+		<!-- --------------------------------------------------------------------- -->
+
+		<header>
+			<span></span>
+			<h1>Titolo</h1>
+		</header>
+
+		<!-- --------------------------------------------------------------------- -->
+
+		<section>
+			<h4 class="titolo-sezione">Sezione 1: <br>Introduzione</h4>
+			<div class="contenuto-sezione">
+				<div class="testo">
+					<p>
+						I metodi sRGB, HSV e Oklab sono tre modi diversi di rappresentare i colori digitali, ognuno nato
+						per
+						risolvere uno specifico problema tecnico o visivo.
+						<li> sRGB è pensato per gli schermi ed è il modello
+							standard basato sui tre colori primari della luce (Rosso, Verde, Blu).
+							<br> Funziona tramite la sintesi additiva: combina tre luci (Rossa, Verde e Blu) per creare
+							tutti gli altri colori. I suoi valori vanno da 0 a 255. Se imposti (255, 0, 0) ottieni il
+							rosso puro;
+							se li azzeri tutti (0, 0, 0) ottieni il nero. Il difetto fondamentale di sRGB è che è stato
+							progettato per i monitor a tubo catodico degli anni '90, non per l'occhio umano.
+							Questo causa tre problemi principali ovvero che non è "percettivamente uniforme", distorce
+							le
+							tonalità e gestisce erroneamente la luminosità.
+						</li>
+						<li> HSV è pensato per la mente
+							umana ma non tiene conto di come i nostri occhi vedono i colori. Per la matematica di HSV,
+							il
+							blu puro e il giallo puro hanno la stessa luminosità, ma per i nostri occhi il giallo è
+							drasticamente
+							più luminoso. </li>
+						<li>Oklab è progettato per essere "percettivamente uniforme”: se aumenti la luminosità, il
+							colore cambia in modo naturale senza alterare la tonalità (evitando, ad esempio, che
+							il blu viri verso il viola). È perfetto per creare gradienti sfumati perfetti e palette
+							bilanciate e per evitare
+							effetti grigiastri.
+						</li>
+						<br> Qual’è il gradiente corretto?
+						<br> I computer calcolano i colori con la matematica, ma spesso l'occhio
+						umano non è d'accordo.
+						Guarda i tre gradienti qui sotto: uno di loro usa il sistema Oklab, progettato per imitare la
+						mente
+						umana. Riesci a indovinare quale dei due è quello corretto in Oklab?
+					</p>
+					<div class="accordion-item">
+						<button class="accordion-button">Perché i colori digitali cambiano la realtà? <span
+								class="accordion-icon">+</span></button>
+						<div class="accordion-content">
+							<p>
+								Se hai sbagliato, hai già capito il problema…
+								<br> Per anni i computer hanno gestito i colori in
+								modo corretto dal punto di vista matematico, ma non percettivo. Sistemi come RGB e sRGB,
+								progettati
+								per i vecchi monitor CRT, rappresentano i colori attraverso la combinazione di rosso,
+								verde e blu,
+								senza considerare realmente il funzionamento della vista umana. <br> Di conseguenza,
+								variazioni
+								numericamente identiche possono apparire molto diverse all'occhio.
+								Lo spazio sRGB, standard storico del web, copre solo una parte dei colori percepibili
+								dall'uomo.
+								Anche i display moderni, capaci di mostrare tonalità molto più ricche, spesso non
+								riescono a
+								sfruttare tutto il loro potenziale a causa dei limiti dei vecchi sistemi colore. Questo
+								provoca
+								perdita di vivacità, precisione e coerenza tra dispositivi diversi. <br>
+								Con l'evoluzione del design digitale — tra HDR, dark mode e schermi sempre più avanzati
+								— questi
+								limiti sono diventati ancora più evidenti. Fenomeni come il banding, transizioni
+								cromatiche poco
+								uniformi e contrasti percepiti in modo errato derivano proprio dal fatto che il computer
+								tratta i
+								colori in modo uniforme, mentre l'occhio umano no.
+								<br> Anche modelli come HSL e HSV, molto usati nel design, non garantiscono risultati
+								visivamente
+								coerenti, rendendo più complessa la creazione di palette armoniose e interfacce
+								equilibrate.
+								Da queste problematiche nasce Oklab. Björn Ottosson sviluppò uno spazio colore
+								progettato non solo
+								per rappresentare i colori matematicamente, ma per rispecchiare il modo in cui vengono
+								realmente
+								percepiti dalle persone, rendendo il design digitale più naturale, coerente e accurato.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="sketch">
+					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/01_trova_oklab/"></iframe>
+				</div>
+			</div>
+		</section>
+
+		<!-- --------------------------------------------------------------------- -->
+	<section>
+			<h4 class="titolo-sezione">Sezione 2:<br>I Coni</h4>
+			<div class="accordion-item">
+			<button class="accordion-button">I coni L, M e S <span
+			class="accordion-icon">+</span></button>
+			<div class="accordion-content">
+					<p>
+						Il grafico rappresenta la sensibilità dei tre tipi di coni dell’occhio umano rispetto alle
+						diverse lunghezze d’onda della luce visibile. Sull’asse orizzontale sono riportate le lunghezze
+						d’onda (\lambda) espresse in nanometri (nm), mentre sull’asse verticale è indicata la
+						sensibilità relativa dei fotorecettori. I coni si dividono in tre categorie: coni (S) (Short),
+						sensibili alle lunghezze d’onda corte e quindi alle tonalità blu; coni (M) (Medium),
+						maggiormente sensibili alle lunghezze d’onda medie associate al verde; e coni (L) (Long), più
+						sensibili alle lunghezze d’onda lunghe associate al rosso. I picchi delle tre curve si trovano
+						approssimativamente in corrispondenza di (\lambda \approx 445,nm) per i coni (S), (\lambda
+						\approx 545,nm) per i coni (M) e (\lambda \approx 570,nm) per i coni (L). La caratteristica più
+						importante del grafico è la sovrapposizione delle curve: un singolo colore non attiva un solo
+						tipo di cono, ma stimola contemporaneamente più fotorecettori con intensità differenti. La
+						percezione cromatica nasce quindi dal confronto tra le risposte relative dei coni, ad esempio
+						una luce gialla intorno ai (580,nm) produce una forte attivazione dei coni (L), una risposta
+						significativa dei coni (M) e una risposta quasi nulla dei coni (S). Il cervello interpreta
+						questa combinazione come giallo. In termini generali, il sistema visivo elabora i colori
+						confrontando le attivazioni relative (L), (M) e (S), ad esempio il rosso viene percepito quando
+						(L \gg M,S). Questo principio è alla base della visione tricromatica umana e spiega anche il
+						funzionamento dei display RGB, che ricreano i colori stimolando i tre tipi di coni con
+						differenti intensità luminose.
+					</p>
+				</div>
+				<div class="sketch">
+					<br>
+					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/02_coni/"></iframe>
+				</div>
+			</div>
+		</section>
+
+		<!-- --------------------------------------------------------------------- -->
+
+		<section>
+			<h4 class="titolo-sezione">Sezione 3:<br>CIELAB</h4>
+			<div class="contenuto-sezione">
+				<div class="testo">
+					<p>
+						Quando guardiamo un colore su uno schermo pensiamo che il computer lo rappresenti esattamente
+						per
+						quello che è. In realtà, per molti anni i software hanno “calcolato” i colori in modo corretto
+						dal
+						punto di vista matematico, ma spesso sbagliato dal punto di vista percettivo. Questo significa
+						che
+						il colore mostrato dallo schermo non sempre viene percepito dall’occhio umano nel modo previsto
+						dai
+						designer.
+						Il problema nasce dal fatto che i computer lavorano principalmente con modelli come RGB. In
+						questo
+						sistema ogni colore viene creato mescolando luce rossa, verde e blu. È un metodo efficiente per
+						gli
+						schermi, ma non tiene realmente conto del funzionamento della vista umana. L’occhio e il
+						cervello,
+						infatti, non interpretano i colori in maniera lineare. Alcune variazioni di luminosità sembrano
+						molto più forti di altre, anche quando i numeri cambiano nello stesso modo.
+					</p>
+				</div>
+				<div class="sketch">
+					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/03_CIELAB/"></iframe>
+				</div>
+			</div>
+		</section>
+
+
+
+
+		<section>
+			<h4 class="titolo-sezione">Sezione 4:<br>OKLAB</h4>
+		<div class="contenuto-sezione">
+				<div class="testo">
+					<p>
+						La fonte principale è l'articolo originale scritto da Björn Ottosson, dove lui stesso spiega
+						perché
+						ha creato Oklab e quali limiti voleva risolvere nei sistemi colore esistenti. (Björn Ottosson)
+						In particolare:
+						<li> il concetto di "perceptual color space", </li>
+						<li> i problemi di uniformità nei gradienti, </li>
+						<li> l'idea di prevedere meglio luminosità, hue e chroma, </li>
+						<li> e la struttura con componenti L, a e b </li>
+					</p>
+				</div>
+				<div class="sketch">
+					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/04_OKLAB/"></iframe>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- --------------------------------------------------------------------- -->
+
+		<section class="filetto">
+			<h4 class="titolo-sezione">Bibliografia</h4>
+			<div class="contenuto-sezione">
+				<ul>
+					<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+					<li>Maecenas quis ante sit amet neque cursus hendrerit ac sit amet nisl</li>
+					<li>In cursus aliquam odio eu eleifend</li>
+					<li>Ut sed auctor magna</li>
+					<li>In hac habitasse platea dictumst</li>
+					<li>Aliquam aliquam nisl mi</li>
+					<li>Phasellus et orci elit</li>
+					<li>Maecenas vehicula elit et lacus accumsan consequat</li>
+					<li>Nam consectetur lacus ante</li>
+					<li>Vestibulum et massa dolor</li>
+					<li>Aenean condimentum blandit eros non dapibus</li>
+					<li>Maecenas quam nulla, porta eu nibh in, cursus iaculis mauris</li>
+					<li>Phasellus sit amet nulla eu tellus dictum cursus</li>
+					<li>Sed aliquet, ipsum sit amet tempus semper, augue velit consequat mi, et gravida sem purus a quam
+					</li>
+				</ul>
+
+			</div>
+		</section>
+
+
+	</main>
+</body>
+
+</html>

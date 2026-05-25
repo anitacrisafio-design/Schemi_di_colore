@@ -1,0 +1,246 @@
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+body {
+	background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0a0a0a 100%);
+	color: #e8e8e8;
+	padding: 4em 3em;
+	margin: 0;
+	font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-variation-settings: "slnt" 0;
+	letter-spacing: -0.015em;
+	line-height: 1.6;
+	min-height: 100vh;
+}
+
+p {
+	margin: 0 0 1.2em 0;
+	width: 100%;
+	max-width: 100%;
+	font-size: 0.95em;
+	font-weight: 400;
+	line-height: 1.7;
+	color: #d0d0d0;
+}
+
+h1 {
+	margin: 0;
+	font-size: 3.5em;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	line-height: 1.2;
+}
+
+h4 {
+	margin: 0;
+	font-weight: 600;
+}
+
+iframe {
+	margin: 0;
+	display: block;
+	border: none;
+	width: 100%;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 10px 40px rgba(255, 213, 0, 0.1);
+	transition: box-shadow 0.3s ease;
+}
+
+iframe:hover {
+	box-shadow: 0 20px 60px rgba(255, 213, 0, 0.2);
+}
+
+header {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	margin-bottom: 4em;
+	padding-top: 0.5em;
+	border-bottom: 2px solid rgba(255, 213, 0, 0.2);
+	padding-bottom: 2em;
+}
+
+section {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	margin-bottom: 5em;
+	padding-top: 0.5em;
+	scroll-margin-top: 2em;
+}
+
+.filetto {
+	border-top: 2px solid rgba(255, 213, 0, 0.3);
+}
+
+.titolo-sezione {
+	margin-right: 2em;
+	font-size: 1.4em;
+	color: #ffd500;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	position: sticky;
+	top: 4em;
+}
+
+.contenitore {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.contenuto-sezione {
+	display: grid;
+	grid-template-columns: 1.2fr 1fr;
+	gap: 3em;
+	align-items: start;
+}
+
+.testo {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.testo p:last-child {
+	margin-bottom: 0;
+}
+
+.sketch {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	position: sticky;
+	top: 6em;
+}
+
+ul {
+	margin: 1.5em 0;
+	padding-left: 1.5em;
+}
+
+li {
+	margin-bottom: 0.8em;
+	font-weight: 400;
+	line-height: 1.7;
+	color: #d0d0d0;
+}
+
+li strong {
+	color: #ffd500;
+	font-weight: 600;
+}
+
+/* Accordion styles */
+.accordion-item {
+	margin: 1.5em 0;
+}
+
+.accordion-button {
+	background: none;
+	border: 2px solid rgba(255, 213, 0, 0.4);
+	color: #e8e8e8;
+	padding: 1em 1.2em;
+	font-size: 0.95em;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	width: 100%;
+	text-align: left;
+	font-family: inherit;
+	letter-spacing: -0.015em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 6px;
+}
+
+.accordion-button:hover {
+	border-color: rgba(255, 213, 0, 0.7);
+	background: rgba(255, 213, 0, 0.05);
+}
+
+.accordion-button.active {
+	border-color: #ffd500;
+	background: rgba(255, 213, 0, 0.1);
+	color: #ffd500;
+}
+
+.accordion-icon {
+	display: inline-block;
+	transition: transform 0.3s ease;
+	font-weight: 700;
+}
+
+.accordion-button.active .accordion-icon {
+	transform: rotate(45deg);
+}
+
+.accordion-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease;
+}
+
+.accordion-content.active {
+	max-height: 1000px;
+	transition: max-height 0.3s ease;
+}
+
+.accordion-content p {
+	padding: 1em 0;
+	margin: 0;
+}
+
+/* -- breakpoint: schermi piccoli, larghezza massima 600 pixel -- */
+
+@media only screen and (max-width: 600px) {
+	body {
+		padding: 2em 1.5em;
+	}
+
+	h1 {
+		font-size: 2.2em;
+	}
+
+	header,
+	section {
+		grid-template-columns: 1fr;
+		margin-bottom: 3em;
+	}
+
+	.titolo-sezione {
+		margin-right: 0;
+		margin-bottom: 1.5em;
+		position: relative;
+		top: auto;
+	}
+
+	.contenitore {
+		width: 100%;
+	}
+
+	.contenuto-sezione {
+		grid-template-columns: 1fr;
+		gap: 1.5em;
+	}
+
+	.sketch {
+		position: relative;
+		top: auto;
+	}
+
+	img {
+		width: 100%;
+	}
+
+	.accordion-button {
+		font-size: 0.85em;
+	}
+}
