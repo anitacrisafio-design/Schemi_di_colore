@@ -2,6 +2,24 @@ function setup() {
 	createCanvas(windowWidth, windowHeight)
 }
 
+function toggleFullscreen() {
+
+  let fs = fullscreen();
+
+  fullscreen(!fs);
+}
+
+// RESIZE
+function windowResized() {
+
+  resizeCanvas(
+    windowWidth,
+    windowHeight
+  );
+
+  generateGradients();
+}
+
 function draw() {
 
 	// Crea i controlli per comparare CIELAB e OKLab
