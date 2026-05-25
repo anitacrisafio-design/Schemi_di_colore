@@ -1,24 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-	<meta charset="UTF-8">
-	<!-- p5.js -->
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
-
-  <!-- chroma.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Esempio 4: Funzioni trigonometrich (sin, cos, tan)
-</title>
-	<style>
-		body {
-			background-color: lightgray;
-			margin: 0;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio-Percezione vs Display RGB</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #121214; /* Sfondo scuro per far risaltare la luce */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #e2e8f0;
+        }
+        #canvas-container {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            overflow: hidden;
+            background-color: #1a1a1e;
+        }
+        /* Styling minimale per gli slider HTML generati da p5 */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: #2d2d34;
+            height: 6px;
+            border-radius: 3px;
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+    </style>
 </head>
 <body>
-	<script src="sketch.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+    <div id="canvas-container"></div>
+
+    <script>
+        let occhioSlider, displaySlider;
+
+        function setup() {
+            let canvas = createCanvas(800, 500);
+            canvas.parent('canvas-container');
+            
+            // Usiamo il sistema HSB per mappare lo spettro continuo della luce (0-360 gradi)
+            colorMode(RGB);
+
+            // Slider 1: Percezione dell'occhio (Spettro continuo)
+            occhioSlider = createSlider(0, 360, 200);
+            occhioSlider.position(50, 440);
+            occhioSlider.style('width', '300px');
+
+            // Slider 2: Rappresentazione del Display (Sintesi RGB)
+            displaySlider = createSlider(0, 360, 45);
+            displaySlider.position(450, 440);
+            displaySlider.style('width', '300px');
+        }
+
+        function draw() {
+            background(22, 22, 26);
+
+            // Calcolo dei colori dai rispettivi slider (conversione interna da Hue a RGB)
+            let colorOcchio = hueToRGB(occhioSlider.value());
+            let colorDisplay = hueToRGB(displaySlider.value());
+
+            // Divisore Centrale di design
+            stroke(40);
+            strokeWeight(1);
+            line(width / 2, 40, width / 2, 400);
+            noStroke();
+
+            // =================================================================
+            // SEZIONE 1: OCCHIO UMANO (SINISTRA)
+            // =================================================================
+            
+            // Titoli
+            fill(255);
+            textSize(18);
+            textStyle(BOLD);
+            text("1. Percezione Biologica", 50, 50);
+            
+            fill(150);
+            textSize(11);
+            textStyle(NORMAL);
+            text("COME GLI IMPULSI STIMOLANO I CONI RETINICI", 50, 70);
+
+            // Cerchio del colore percepito
+            fill(colorOcchio.r, colorOcchio.g, colorOcchio.b);
+            ellipse(100, 140, 80, 80);
+
+            // Simulazione attivazione fotorecettori (Coni S, M, L)
+            // L'occhio umano non vede "i pixel", vede curve di risposta biochimica
+            fill(200);
+            textSize(12);
+            text("Attivazione dei recettori nella retina:", 50, 220);
+
+            let barMaxW = 180;
+            // Cono L (Sensibile alle lunghezze d'onda lunghe - Rosso)
+            drawConeBar("Coni L (Rosso-Giallo)", 50, 250, colorOcchio.r, color(239, 68, 68), barMaxW);
+            // Cono M (Sensibile alle lunghezze d'onda medie - Verde)
+            drawConeBar("Coni M (Verde)", 50, 295, colorOcchio.g, color(34, 197, 94), barMaxW);
+            // Cono S (Sensibile alle lunghezze d'onda corte - Blu)
+            drawConeBar("Coni S (Blu)", 50, 340, colorOcchio.b, color(59, 130, 246), barMaxW);
+
+
+            // =================================================================
+            // SEZIONE 2: DISPLAY HARDWARE (DESTRA)
+            // =================================================================
+            
+            fill(255);
+            textSize(18);
+            textStyle(BOLD);
+            text("2. Rappresentazione Display", 450, 50);
+            
+            fill(150);
+            textSize(11);
+            textStyle(NORMAL);
+            text("SINTESI ADDITIVA TRAMITE SUBPIXEL EMISSIVI", 450, 70);
+
+            // Cerchio del colore finale ingannato
+            fill(colorDisplay.r, colorDisplay.g, colorDisplay.b);
+            ellipse(500, 140, 80, 80);
+
+            fill(200);
+            textSize(12);
+            text("Zoom al microscopio sui Subpixel dello schermo:", 450, 220);
+
+            // Disegno della struttura fisica dei pixel RGB sul display
+            let startX = 450;
+            let startY = 240;
+            let subW = 40;
+            let subH = 110;
+
+            // Subpixel ROSSO
+            fill(colorDisplay.r, 0, 0);
+            rect(startX, startY, subW, subH, 4);
+            // Subpixel VERDE
+            fill(0, colorDisplay.g, 0);
+            rect(startX + subW + 10, startY, subW, subH, 4);
+            // Subpixel BLU
+            fill(0, 0, colorDisplay.b);
+            rect(startX + (subW * 2) + 20, startY, subW, subH, 4);
+
+            // Etichette dei valori hardware (0-255) sotto i subpixel
+            fill(150);
+            textSize(11);
+            textAlign(CENTER, TOP);
+            text(`R: ${colorDisplay.r}`, startX + subW/2, startY + subH + 8);
+            text(`G: ${colorDisplay.g}`, startX + subW + 10 + subW/2, startY + subH + 8);
+            text(`B: ${colorDisplay.b}`, startX + (subW * 2) + 20 + subW/2, startY + subH + 8);
+            textAlign(LEFT, TOP); // Reset allineamento
+
+
+            // =================================================================
+            // INTERFACCIA SLIDER & DIDASCALIE
+            // =================================================================
+            fill(130);
+            textSize(12);
+            text("Trascina per scorrere lo spettro visibile continuo", 50, 415);
+            text("Trascina per accendere/spegnere i subpixel fisici", 450, 415);
+        }
+
+        // Funzione di supporto per disegnare le barre dei coni biologici
+        function drawConeBar(label, x, y, val, col, maxW) {
+            fill(150);
+            textSize(11);
+            text(label, x, y);
+            
+            // Sfondo barra
+            fill(45, 45, 52);
+            rect(x, y + 6, maxW, 8, 4);
+            
+            // Barra di intensità del segnale neuronale
+            let w = map(val, 0, 255, 0, maxW);
+            fill(col);
+            rect(x, y + 6, w, 8, 4);
+        }
+
+        // Algoritmo matematico puro per convertire la coordinata dello slider (0-360) 
+        // in uno spettro RGB accurato senza usare funzioni di libreria HSB esterne
+        function hueToRGB(h) {
+            let r = 0, g = 0, b = 0;
+            let x = (1 - abs((h / 60) % 2 - 1)) * 255;
+            
+            if (h >= 0 && h < 60) { r = 255; g = x; }
+            else if (h >= 60 && h < 120) { r = x; g = 255; }
+            else if (h >= 120 && h < 180) { g = 255; b = x; }
+            else if (h >= 180 && h < 240) { g = x; b = 255; }
+            else if (h >= 240 && h < 300) { r = x; b = 255; }
+            else if (h >= 300 && h <= 360) { r = 255; b = x; }
+            
+            return { r: floor(r), g: floor(g), b: floor(b) };
+        }
+    </script>
 </body>
 </html>
