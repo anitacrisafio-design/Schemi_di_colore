@@ -1,166 +1,429 @@
+// p5.js — Enhanced Cone Fundamentals Graph
+// Versione visual migliorata e moderna
+
 function setup() {
-  createCanvas(1100, 500);
+  createCanvas(1600, 950);
+  pixelDensity(2);
   noLoop();
 }
 
 function draw() {
-  background(255);
-  
-  // Margini del grafico
-  let marginL = 100;
-  let marginR = 150;
-  let marginT = 100;
-  let marginB = 100;
-  
-  // Dimensioni degli assi
-  let graphW = width - marginL - marginR;
-  let graphH = height - marginT - marginB;
+  drawBackground();
 
-  // --- TITOLI ---
-  textAlign(CENTER, CENTER);
-  textFont('Helvetica, Arial');
-  
-  // Titolo principale
-  fill(0);
-  textSize(22);
-  textStyle(BOLD);
-  text("Grafico dei Coni L, M e S", width / 2 - 25, 60);
-  
-  // Sottotitolo
-  textSize(14);
-  textStyle(NORMAL);
-  fill(80);
-  text("Sensibilità alla luce dei coni L, M e S per diverse lunghezze d'onda", width / 2 - 25, 90);
+  drawCard();
 
-  // --- GRIGLIA E ASSI ---
-  stroke(230);
-  strokeWeight(1);
-  
-  // Linee orizzontali (Sensibilità da 0.0 a 1.0)
-  for (let i = 0; i <= 5; i++) {
-    let y = map(i * 0.2, 0, 1.0, height - marginB, marginT);
-    line(marginL, y, width - marginR, y);
-    
-    // Etichette asse Y
-    noStroke();
-    fill(100);
-    textSize(12);
-    textAlign(RIGHT, CENTER);
-    text((i * 0.2).toFixed(1), marginL - 15, y);
-    stroke(230);
+  drawGrid();
+
+  drawAxes();
+
+  drawCurves();
+
+  drawLegend();
+
+  drawTitles();
+}
+
+// --------------------------------------------------
+// LAYOUT
+// --------------------------------------------------
+
+const graph = {
+  x: 180,
+  y: 140,
+  w: 1180,
+  h: 620
+};
+
+// --------------------------------------------------
+// BACKGROUND
+// --------------------------------------------------
+
+function drawBackground() {
+
+  // Gradient background
+  for (let y = 0; y < height; y++) {
+
+    let inter = map(y, 0, height, 0, 1);
+
+    let c = lerpColor(
+      color(245, 246, 250),
+      color(228, 231, 238),
+      inter
+    );
+
+    stroke(c);
+    line(0, y, width, y);
   }
-  
-  // Linee verticali (Lunghezza d'onda da 400 a 800 nm)
-  for (let wl = 400; wl <= 800; wl += 100) {
-    let x = map(wl, 400, 800, marginL, width - marginR);
-    line(x, marginT, x, height - marginB);
-    
-    // Etichette asse X
-    noStroke();
-    fill(100);
-    textSize(12);
-    textAlign(CENTER, TOP);
-    text(wl, x, height - marginB + 15);
-    stroke(230);
-  }
+}
 
-  // Assi principali (Neri)
-  stroke(0);
-  strokeWeight(1.5);
-  // Asse X
-  line(marginL, height - marginB, width - marginR, height - marginB);
-  // Asse Y
-  line(marginL, marginT, marginL, height - marginB);
+// --------------------------------------------------
+// CARD CONTAINER
+// --------------------------------------------------
 
-  // --- TITOLI ASSI ---
+function drawCard() {
+
   noStroke();
-  fill(0);
-  textSize(14);
-  
-  // Titolo Asse Y (Ruotato)
-  push();
-  translate(40, (marginT + height - marginB) / 2);
-  rotate(-HALF_PI);
-  textAlign(CENTER, CENTER);
-  text("Sensibilità", 0, 0);
-  pop();
-  
-  // Titolo Asse X
-  textAlign(CENTER, CENTER);
+
+  // Ombra
+  fill(0, 20);
+  rect(
+    graph.x - 40,
+    graph.y - 50,
+    graph.w + 120,
+    graph.h + 170,
+    30
+  );
+
+  // Card
+  fill(252);
+  rect(
+    graph.x - 50,
+    graph.y - 60,
+    graph.w + 120,
+    graph.h + 170,
+    28
+  );
+}
+
+// --------------------------------------------------
+// GRIGLIA
+// --------------------------------------------------
+
+function drawGrid() {
+
+  stroke(225);
+  strokeWeight(1);
+
+  // Verticali
+  for (let i = 0; i <= 9; i++) {
+
+    let x = map(i, 0, 9, graph.x, graph.x + graph.w);
+
+    line(x, graph.y, x, graph.y + graph.h);
+  }
+
+  // Orizzontali
+  for (let i = 0; i <= 10; i++) {
+
+    let y = map(i, 0, 10, graph.y + graph.h, graph.y);
+
+    line(graph.x, y, graph.x + graph.w, y);
+  }
+}
+
+// --------------------------------------------------
+// ASSI
+// --------------------------------------------------
+
+function drawAxes() {
+
+  stroke(55);
+  strokeWeight(2);
+
+  // asse x
+  line(
+    graph.x,
+    graph.y + graph.h,
+    graph.x + graph.w,
+    graph.y + graph.h
+  );
+
+  // asse y
+  line(
+    graph.x,
+    graph.y,
+    graph.x,
+    graph.y + graph.h
+  );
+
+  drawTicks();
+}
+
+function drawTicks() {
+
+  fill(60);
+  noStroke();
+
+  textSize(18);
+  textAlign(CENTER);
+
+  // Tacche X
+  for (let nm = 400; nm <= 800; nm += 100) {
+
+    let x = map(nm, 400, 850, graph.x, graph.x + graph.w);
+
+    stroke(60);
+    line(x, graph.y + graph.h, x, graph.y + graph.h + 10);
+
+    noStroke();
+    text(nm, x, graph.y + graph.h + 38);
+  }
+
+  // Tacche Y
+  textAlign(RIGHT);
+
+  for (let v = 0; v <= 1; v += 0.2) {
+
+    let y = map(v, 0, 1, graph.y + graph.h, graph.y);
+
+    stroke(60);
+    line(graph.x - 10, y, graph.x, y);
+
+    noStroke();
+    text(nf(v, 1, 1), graph.x - 18, y + 6);
+  }
+}
+
+// --------------------------------------------------
+// TITOLI
+// --------------------------------------------------
+
+function drawTitles() {
+
+  noStroke();
+
+  // Titolo
+  fill(35);
+
+  textAlign(CENTER);
+
+  textSize(34);
+  textStyle(BOLD);
+
+  text(
+    "Stockman & Sharpe 2° Cone Fundamentals",
+    width / 2,
+    70
+  );
+
+  textSize(24);
   textStyle(NORMAL);
-  text("Lunghezza d'onda λ (nm)", (marginL + width - marginR) / 2, height - marginB + 50);
 
-  // --- TRACCIAMENTO CURVE ---
-  noFill();
-  strokeWeight(3.5);
-  
-  // Configurazione dei picchi (Approssimazione gaussiana)
-  // [Colore, Picco WL, Deviazione Standard, Altezza Massima]
-  let cones = {
-    'S': { col: color(45, 105, 250), peak: 445, sd: 25, amp: 0.95 },
-    'M': { col: color(40, 250, 110), peak: 543, sd: 38, amp: 0.95 },
-    'L': { col: color(255, 60, 70),  peak: 566, sd: 42, amp: 0.95 }
-  };
+  fill(90);
 
-  // Disegna curva per curva
-  for (let key in cones) {
-    let c = cones[key];
-    stroke(c.col);
+  text(
+    "Colour Matching Functions",
+    width / 2,
+    105
+  );
+
+  // Label asse X
+  fill(50);
+
+  textSize(24);
+
+  text(
+    "Wavelength λ (nm)",
+    graph.x + graph.w / 2,
+    graph.y + graph.h + 80
+  );
+
+  // Label asse Y
+  push();
+
+  translate(75, graph.y + graph.h / 2);
+
+  rotate(-HALF_PI);
+
+  text("Sensitivity", 0, 0);
+
+  pop();
+
+  // Caption
+  textAlign(LEFT);
+
+  fill(80);
+
+  textSize(30);
+  textStyle(ITALIC);
+
+  text(
+    "Sensibilità alla luce dei coni L, M e S per diverse lunghezze d'onda.",
+    120,
+    height - 55
+  );
+}
+
+// --------------------------------------------------
+// CURVE
+// --------------------------------------------------
+
+function drawCurves() {
+
+  drawGlowCurve(
+    color(255, 80, 80),
+    coneL
+  );
+
+  drawGlowCurve(
+    color(80, 255, 120),
+    coneM
+  );
+
+  drawGlowCurve(
+    color(70, 120, 255),
+    coneS
+  );
+}
+
+function drawGlowCurve(col, fn) {
+
+  // Glow
+  for (let i = 16; i > 0; i--) {
+
+    stroke(
+      red(col),
+      green(col),
+      blue(col),
+      7
+    );
+
+    strokeWeight(i);
+
+    noFill();
+
     beginShape();
-    
-    for (let wl = 400; wl <= 830; wl += 1) {
-      let x = map(wl, 400, 800, marginL, width - marginR);
-      
-      // Funzione Gaussiana per simulare lo spettro dei coni
-      let yVal = c.amp * exp(-0.5 * pow((wl - c.peak) / c.sd, 2));
-      
-      // Correzione asimmetria per i coni M e L sulle lunghe frequenze
-      if (key !== 'S' && wl > c.peak) {
-        yVal = c.amp * exp(-0.5 * pow((wl - c.peak) / (c.sd * 1.15), 2));
-      }
-      
-      let y = map(yVal, 0, 1.0, height - marginB, marginT);
-      
-      // Limita il disegno all'area del grafico
-      if (x >= marginL && x <= width - marginR) {
-        vertex(x, y);
-      }
+
+    for (let nm = 390; nm <= 830; nm++) {
+
+      let s = fn(nm);
+
+      let x = map(
+        nm,
+        390,
+        850,
+        graph.x,
+        graph.x + graph.w
+      );
+
+      let y = map(
+        s,
+        0,
+        1.05,
+        graph.y + graph.h,
+        graph.y
+      );
+
+      vertex(x, y);
     }
+
     endShape();
   }
 
-  // --- LEGENDA ---
-  let legendX = width - marginR + 10;
-  let legendY = marginT + 10;
-  let spacing = 22;
-  
-  textSize(12);
-  textAlign(LEFT, CENTER);
-  
-  // Legenda L
-  stroke(cones['L'].col);
-  line(legendX, legendY, legendX + 25, legendY);
-  noStroke();
-  fill(0);
-  textStyle(BOLD); text("L: ", legendX + 35, legendY) ;
-  textStyle(ITALIC); text("lunghezza d'onda lunga (Long)", legendX + 50, legendY);
+  // Linea principale
+  stroke(col);
+  strokeWeight(5);
 
-  
-  // Legenda M
-  legendY += spacing;
-  stroke(cones['M'].col);
-  line(legendX, legendY, legendX + 25, legendY);
+  noFill();
+
+  beginShape();
+
+  for (let nm = 390; nm <= 830; nm++) {
+
+    let s = fn(nm);
+
+    let x = map(
+      nm,
+      390,
+      850,
+      graph.x,
+      graph.x + graph.w
+    );
+
+    let y = map(
+      s,
+      0,
+      1.05,
+      graph.y + graph.h,
+      graph.y
+    );
+
+    vertex(x, y);
+  }
+
+  endShape();
+}
+
+// --------------------------------------------------
+// MODELLI CONI
+// --------------------------------------------------
+
+function coneL(x) {
+  return gaussian(x, 570, 42);
+}
+
+function coneM(x) {
+  return gaussian(x, 545, 35);
+}
+
+function coneS(x) {
+  return gaussian(x, 445, 22);
+}
+
+function gaussian(x, mean, sd) {
+
+  return exp(
+    -pow(x - mean, 2) /
+    (2 * pow(sd, 2))
+  );
+}
+
+// --------------------------------------------------
+// LEGENDA
+// --------------------------------------------------
+
+function drawLegend() {
+
+  const lx = 1040;
+  const ly = 165;
+
+  // Ombra
   noStroke();
-  fill(0);
-  textStyle(BOLD); text("M: ", legendX + 35, legendY);
-  textStyle(ITALIC); text("lunghezza d'onda media (Medium)", legendX + 53, legendY);
-  
-  // Legenda S
-  legendY += spacing;
-  stroke(cones['S'].col);
-  line(legendX, legendY, legendX + 25, legendY);
+  fill(0, 18);
+
+  rect(lx + 5, ly + 5, 300, 120, 20);
+
+  // Box
+  fill(255);
+
+  rect(lx, ly, 300, 120, 20);
+
+  drawLegendItem(
+    lx,
+    ly + 28,
+    color(255, 80, 80),
+    "L Cone Fundamentals"
+  );
+
+  drawLegendItem(
+    lx,
+    ly + 60,
+    color(80, 255, 120),
+    "M Cone Fundamentals"
+  );
+
+  drawLegendItem(
+    lx,
+    ly + 92,
+    color(70, 120, 255),
+    "S Cone Fundamentals"
+  );
+}
+
+function drawLegendItem(x, y, col, txt) {
+
+  stroke(col);
+  strokeWeight(5);
+
+  line(x + 18, y, x + 60, y);
+
   noStroke();
-  fill(0);
-  textStyle(BOLD); text("S: ", legendX + 35, legendY);
-  textStyle(ITALIC); text("lunghezza d'onda corta (Short)", legendX + 51, legendY);
+
+  fill(50);
+
+  textAlign(LEFT);
+
+  textSize(18);
+
+  text(txt, x + 78, y + 6);
 }
