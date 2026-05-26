@@ -55,8 +55,16 @@ iframe {
 	transition: box-shadow 0.3s ease;
 }
 
+.sketch iframe,
+.sketch img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1 / 1;
+	min-height: 10px;
+}
+
 iframe:hover {
-	box-shadow: 0 20px 60px rgba(255, 213, 0, 0.2);
+	box-shadow: 0 20px 60px lab(86.43% -0.91 86.79 / 0.2);
 }
 
 header {
@@ -168,7 +176,7 @@ li strong {
 	justify-content: space-between;
 	align-items: center;
 	gap: 0.8em;
-	border-radius: 6px;
+	border-radius: 5px;
 }
 
 .accordion-button:hover {
