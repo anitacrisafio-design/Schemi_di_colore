@@ -34,7 +34,7 @@ function draw() {
 
 	push();
 
-	translate (width / 2, height / 2 + 20);
+	translate(width / 2, height / 2 + 20);
 
 	scale(0.82);
 
@@ -70,7 +70,7 @@ function drawPanel() {
 
 	fill(18);
 
-	rect(10, 10, 430, 480, 24);
+	rect(10, 10, 430, 430, 24);
 }
 
 function drawTriangle() {
