@@ -201,7 +201,7 @@
 					</p>
 				</div>
 				<div class="sketch">
-					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/02_RGB/"></iframe>
+					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/01_trova_oklab/"></iframe>
 				</div>
 			</div>
 		</section>
@@ -269,7 +269,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="contenuto-sezione">
 				<div class="testo">
 					<p>
@@ -324,26 +324,30 @@
 					<div class="accordion-content">
 						<p>
 							Due
-						schermi che utilizzano gli stessi valori RGB possono mostrare tonalità leggermente diverse a
-						causa di caratteristiche hardware differenti, qualità del pannello, calibrazione, illuminazione
-						ambientale o tecnologie di visualizzazione. Lo stesso problema si verifica nella stampa, dove
-						carta, inchiostri e stampanti influenzano significativamente il risultato finale. <br>
+							schermi che utilizzano gli stessi valori RGB possono mostrare tonalità leggermente diverse a
+							causa di caratteristiche hardware differenti, qualità del pannello, calibrazione,
+							illuminazione
+							ambientale o tecnologie di visualizzazione. Lo stesso problema si verifica nella stampa,
+							dove
+							carta, inchiostri e stampanti influenzano significativamente il risultato finale. <br>
 						</p>
 					</div>
 				</div>
 				<div class="accordion-item">
-					<button class="accordion-button" data-accordion-key="spazio-colori">Lo spazio colori <span
+					<button class="accordion-button" data-accordion-key="gamut">Cosa è il gamut <span
 							class="accordion-icon">+</span></button>
-					
-					
-				<div class="accordion-content">
+
+
+					<div class="accordion-content">
 						<p>
-							Uno spazio dei colori, infatti, è una rappresentazione geometrica nella quale ogni
-							colore occupa una posizione specifica determinata da coordinate numeriche. In matematica
-							e informatica, fenomeni dipendenti da più grandezze possono essere rappresentati tramite
-							grafici multidimensionali; lo stesso principio viene applicato alla rappresentazione
-							cromatica. Ogni asse dello spazio colore rappresenta una componente fondamentale del
-							colore stesso. <br>
+							Il gamut o gamma di colore rappresenta l’insieme dei colori che un modello di colore
+							o un dispositivo è in grado di riprodurre, visualizzare o catturare. <br>
+							<br>
+							Ogni monitor, stampante
+							o fotocamera possiede infatti un proprio limite cromatico, che costituisce solo una parte
+							dei colori visibili dall’occhio umano. <br>
+							
+							<br>
 						</p>
 					</div>
 				</div>
@@ -352,23 +356,35 @@
 				<div class="testo">
 					<p>
 						Nonostante l’elevata precisione dei modelli matematici, uno dei principali problemi della
-						rappresentazione cromatica riguarda la diversa resa dei colori tra <span class="accordion-link" data-target="gestione-cromatica">dispositivi differenti.</span> <br>
+						rappresentazione cromatica riguarda la diversa resa dei colori tra <span class="accordion-link"
+							data-target="gestione-cromatica">dispositivi differenti.</span> <br>
 						<br>
 						Per ridurre queste discrepanze vengono utilizzati profili colore e sistemi di gestione
 						cromatica, che permettono di standardizzare la resa visiva tra dispositivi diversi.<br>
-					
+						<br>
+						Di conseguenza, alcuni colori visibili sullo schermo non possono essere riprodotti esattamente
+						sulla carta. Questo limite prende il nome di <span class="accordion-link"
+							data-target="gamut">gamut</span> cromatico.<br>
+						<br>
+						Quando un colore non può essere rappresentato
+						all’interno di uno specifico spazio colore, viene definito fuori gamut (out of gamut).
+						In questi casi il sistema deve approssimare il colore con la tonalità più vicina
+						disponibile, causando possibili differenze nella resa cromatica finale.<br>
+						<br>
+						Per affrontare queste discrepanze sono stati sviluppati i profili colore (ICC Profiles) e i sistemi di Color Management. <br>
+
 					</p>
 				</div>
 
 				<div class="highlight-box">
-						<p>
+					<p>
 						In ambito
 						professionale, la calibrazione dei monitor e delle stampanti rappresenta una fase essenziale del
 						workflow grafico proprio per garantire coerenza cromatica durante tutte le fasi di produzione.
-						</p>
-						
-					</div>
-			
+					</p>
+
+				</div>
+
 			</div>
 		</section>
 
