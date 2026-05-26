@@ -65,7 +65,7 @@
 <body>
 	<main class="contenitore">
 
-		<!-- --------------------------------------------------------------------- -->
+		<!-- -----------------TITOLO + INTRO AFFIANCO AL TITOLO ---------------------------------------------------- -->
 
 		<header>
 
@@ -88,15 +88,15 @@
 				</div>
 		</header>
 
-	
+
 		<!-- --------------------------------------------------------------------- -->
 
 		<section>
 			<div class="sidebar-left">
 				<h4 class="titolo-sezione">LA RAPPRESENTAZIONE DEI COLORI:</h4>
 				<div class="accordion-item">
-					<button class="accordion-button" data-accordion-key="codifica-arbitraria">La codifica arbitraria <span
-							class="accordion-icon">+</span></button>
+					<button class="accordion-button" data-accordion-key="codifica-arbitraria">La codifica arbitraria
+						<span class="accordion-icon">+</span></button>
 					<div class="accordion-content">
 						<p>
 							La codifica arbitraria assegna ai colori dei codici convenzionali scelti da aziende o
@@ -143,7 +143,9 @@
 						ad ogni colore un codice identificativo.<br>
 						<br>
 						Questi metodi si dividono principalmente in due grandi
-						categorie: <span class="accordion-link" data-target="codifica-arbitraria">codifica arbitraria</span> e <span class="accordion-link" data-target="codifica-calcolata">codifica calcolata</span>. <br>
+						categorie: <span class="accordion-link" data-target="codifica-arbitraria">codifica
+							arbitraria</span> e <span class="accordion-link" data-target="codifica-calcolata">codifica
+							calcolata</span>. <br>
 					</p>
 				</div>
 				<div class="sketch">
@@ -156,7 +158,7 @@
 			<div class="sidebar-left">
 				<h4 class="titolo-sezione">SPAZIO DI COLORE:</h4>
 				<div class="accordion-item">
-					<button class="accordion-button">Il modello matematico <span
+					<button class="accordion-button" data-accordion-key="modello-matematico">Il modello matematico <span
 							class="accordion-icon">+</span></button>
 					<div class="accordion-content">
 						<p>
@@ -169,7 +171,8 @@
 					</div>
 				</div>
 				<div class="accordion-item">
-					<button class="accordion-button">Lo spazio colori <span class="accordion-icon">+</span></button>
+					<button class="accordion-button" data-accordion-key="spazio-colori">Lo spazio colori <span
+							class="accordion-icon">+</span></button>
 					<div class="accordion-content">
 						<p>
 							Uno spazio dei colori, infatti, è una rappresentazione geometrica nella quale ogni
@@ -185,8 +188,16 @@
 			<div class="contenuto-sezione">
 				<div class="testo">
 					<p>
-						Per comprendere meglio questo sistema bisogna introdurre il concetto di modello matematico e
-						dello spazio colore. <br>
+						Per comprendere meglio questo sistema bisogna introdurre il concetto di <span
+							class="accordion-link" data-target="modello-matematico">modello matematico</span> e <span
+							class="accordion-link" data-target="spazio-colori">dello spazio colore</span>. <br>
+
+						<br>Uno spazio dei colori, infatti, è una rappresentazione geometrica nella quale ogni colore
+						occupa
+						una posizione specifica determinata da coordinate numeriche. In matematica e informatica,
+						fenomeni dipendenti da più grandezze possono essere rappresentati tramite grafici
+						multidimensionali; lo stesso principio viene applicato alla rappresentazione cromatica. Ogni
+						asse dello spazio colore rappresenta una componente fondamentale del colore stesso.
 					</p>
 				</div>
 				<div class="sketch">
@@ -199,11 +210,12 @@
 			<div class="sidebar-left">
 				<h4 class="titolo-sezione">MODELLI DI COLORE:</h4>
 				<div class="accordion-item">
-					<button class="accordion-button">Di più sul modello RGB <span
+					<button class="accordion-button" data-accordion-key="modello-rgb">Di più sul modello RGB <span
 							class="accordion-icon">+</span></button>
 					<div class="accordion-content">
 						<p>
-							Il modello RGB si basa sulla sintesi additiva della luce. Significa che combinando luci
+							Il modello RGB
+							categorie si basa sulla sintesi additiva della luce. Significa che combinando luci
 							rrosse, verdi e blu con intensità differenti è possibile ottenere tutti gli altri colori.
 							Quando le tre componenti hanno intensità massima si ottiene il bianco, mentre l’assenza
 							totale di luce produce il nero. Ogni componente viene generalmente espressa con valori
@@ -217,7 +229,7 @@
 					</div>
 				</div>
 				<div class="accordion-item">
-					<button class="accordion-button">Di più sul modello CMYK <span
+					<button class="accordion-button" data-accordion-key="modello-cmyk">Di più sul modello CMYK <span
 							class="accordion-icon">+</span></button>
 					<div class="accordion-content">
 						<p>
@@ -231,21 +243,33 @@
 					</div>
 				</div>
 				<div class="accordion-item">
-					<button class="accordion-button">Di più sul modello HSB/HSV <span
+					<button class="accordion-button" data-accordion-key="modello-hsb">Di più sul modello HSB/HSV <span
 							class="accordion-icon">+</span></button>
 					<div class="accordion-content">
 						<p>
-							La tonalità indica il tipo di colore, come rosso, blu o verde. La saturazione rappresenta
-							l’intensità del colore: una saturazione alta produce colori vivaci e brillanti, mentre una
-							saturazione bassa genera colori più spenti e tendenti al grigio. La luminosità, invece,
-							definisce quanto il colore sia chiaro o scuro.
-							Questo modello è molto apprezzato perché rispecchia meglio il modo in cui l’essere umano
-							percepisce i colori e consente modifiche intuitive all’interno dei software di grafica
-							e fotoritocco. <br>
+							Nel modello HSV la tonalità rappresenta il tipo di colore percepito, ad esempio rosso, verde
+							o blu, ed è generalmente rappresentata come un angolo all’interno di una ruota cromatica.
+							<br>La
+							saturazione indica invece la purezza del colore: un’elevata saturazione corrisponde a colori
+							intensi e vivaci, mentre una bassa saturazione produce colori tendenti al grigio.<br>
+							Infine, la
+							luminosità determina quanto un colore appare chiaro o scuro. <br>
+							<br>
+							Questo modello risulta
+							particolarmente utile nei software di grafica e fotoritocco perché riflette più fedelmente
+							il modo in cui l’essere umano percepisce e modifica intuitivamente i colori.
+
+							Dal punto di vista geometrico, lo spazio HSV viene spesso rappresentato attraverso una
+							struttura cilindrica tridimensionale. In questa rappresentazione:
+							<li>la tonalità varia lungo la circonferenza del cilindro,</li>
+							<li>la saturazione aumenta radialmente dal centro verso l’esterno,</li>
+							<li>la luminosità varia verticalmente lungo l’asse del cilindro.</li>
+
 						</p>
 					</div>
 				</div>
 			</div>
+			
 			<div class="contenuto-sezione">
 				<div class="testo">
 					<p>
@@ -254,22 +278,100 @@
 						utilizzate tre o quattro componenti cromatiche che, combinate tra loro, permettono di ottenere
 						milioni di tonalità differenti. <br>
 						<br>
-						Tra i modelli di colore più importanti troviamo il modello RGB. Questo modello viene utilizzato
+						Tra i modelli di colore più importanti troviamo il modello <span class="accordion-link"
+							data-target="modello-rgb">RGB</span>. Questo modello viene utilizzato
 						principalmente nei dispositivi elettronici come monitor, smartphone, televisori e tablet. RGB
 						deriva dalle iniziali di Red, Green e Blue, cioè rosso, verde e blu.
 					</p>
 					<p>
-						Un altro modello molto importante è il CMYK, utilizzato principalmente nel settore della stampa.
+						Un altro modello molto importante è il <span class="accordion-link"
+							data-target="modello-cmyk">CMYK</span>, utilizzato principalmente nel settore della stampa.
 						CMYK significa Cyan, Magenta, Yellow e Black.
 					</p>
 					<p>
-						Un altro modello molto diffuso è il modello HSB o HSV, particolarmente utilizzato nei software
+						Un altro modello molto diffuso è il <span class="accordion-link" data-target="modello-hsb">HSB o
+							HSV</span>, particolarmente utilizzato nei software
 						di grafica perché più intuitivo dal punto di vista visivo. Questo sistema rappresenta i colori
 						attraverso tre parametri: tonalità, saturazione e luminosità.
 					</p>
+					<div class="highlight-box">
+						<p>
+							<strong>È importante distinguere tra modello colore e spazio colore.</strong><br>
+							Il modello colore rappresenta il sistema matematico astratto, come RGB o CMYK.
+							Lo spazio colore, invece, è l'applicazione concreta di quel modello attraverso regole
+							precise che definiscono l'insieme dei colori riproducibili.
+						</p>
+						<p><strong>Ad esempio:</strong></p>
+						<ul>
+							<li>sRGB</li>
+							<li>Adobe RGB</li>
+							<li>ProPhoto RGB</li>
+						</ul>
+						<p>sono spazi colore derivati dal modello RGB.</p>
+					</div>
 				</div>
 			</div>
+			</div>
 		</section>
+
+		<!-- --------------------------------------------------------------------- -->
+		<section>
+			<div class="sidebar-left">
+				<h4 class="titolo-sezione">SISTEMI DI GESTIONE CROMATICA:</h4>
+				<div class="accordion-item">
+					<button class="accordion-button" data-accordion-key="gestione-cromatica">Esempio <span
+							class="accordion-icon">+</span></button>
+					<div class="accordion-content">
+						<p>
+							Due
+						schermi che utilizzano gli stessi valori RGB possono mostrare tonalità leggermente diverse a
+						causa di caratteristiche hardware differenti, qualità del pannello, calibrazione, illuminazione
+						ambientale o tecnologie di visualizzazione. Lo stesso problema si verifica nella stampa, dove
+						carta, inchiostri e stampanti influenzano significativamente il risultato finale. <br>
+						</p>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<button class="accordion-button" data-accordion-key="spazio-colori">Lo spazio colori <span
+							class="accordion-icon">+</span></button>
+					
+					
+				<div class="accordion-content">
+						<p>
+							Uno spazio dei colori, infatti, è una rappresentazione geometrica nella quale ogni
+							colore occupa una posizione specifica determinata da coordinate numeriche. In matematica
+							e informatica, fenomeni dipendenti da più grandezze possono essere rappresentati tramite
+							grafici multidimensionali; lo stesso principio viene applicato alla rappresentazione
+							cromatica. Ogni asse dello spazio colore rappresenta una componente fondamentale del
+							colore stesso. <br>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="contenuto-sezione">
+				<div class="testo">
+					<p>
+						Nonostante l’elevata precisione dei modelli matematici, uno dei principali problemi della
+						rappresentazione cromatica riguarda la diversa resa dei colori tra <span class="accordion-link" data-target="gestione-cromatica">dispositivi differenti.</span> <br>
+						<br>
+						Per ridurre queste discrepanze vengono utilizzati profili colore e sistemi di gestione
+						cromatica, che permettono di standardizzare la resa visiva tra dispositivi diversi.<br>
+					
+					</p>
+				</div>
+
+				<div class="highlight-box">
+						<p>
+						In ambito
+						professionale, la calibrazione dei monitor e delle stampanti rappresenta una fase essenziale del
+						workflow grafico proprio per garantire coerenza cromatica durante tutte le fasi di produzione.
+						</p>
+						
+					</div>
+			
+			</div>
+		</section>
+
 		<!-- --------------------------------------------------------------------- -->
 
 		<section class="filetto">
