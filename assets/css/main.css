@@ -145,7 +145,7 @@ li strong {
 
 /* Accordion styles */
 .accordion-item {
-	margin: 1.275em 0;
+	margin: 0.1em 0;
 	padding: 0.68em 0.85em;
 	border-radius: 8.5px;
 	background: rgba(255, 255, 255, 0.06);
@@ -165,14 +165,10 @@ li strong {
 	font-family: inherit;
 	letter-spacing: -0.015em;
 	display: flex;
-	justify-content: flex-start;
+	justify-content: space-between;
 	align-items: center;
-<<<<<<< HEAD
 	gap: 0.8em;
-	border-radius: 6px;
-=======
 	border-radius: 5px;
->>>>>>> 9ebc86c91b52f6f6017b024b8a8418821c7bd8eb
 }
 
 .accordion-button:hover {
@@ -190,7 +186,7 @@ li strong {
 	display: inline-block;
 	transition: transform 0.3s ease;
 	font-weight: 700;
-	order: -1;
+	margin-left: auto;
 }
 
 .accordion-button.active .accordion-icon {
