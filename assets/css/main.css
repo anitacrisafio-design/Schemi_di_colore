@@ -5,23 +5,23 @@
 body {
 	background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0a0a0a 100%);
 	color: #e8e8e8;
-	padding: 4em 3em;
+	padding: 2em 3em;
 	margin: 0;
 	font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;
 	font-variation-settings: "slnt" 0;
-	letter-spacing: -0.015em;
-	line-height: 1;
+	/* letter-spacing: -0.015em; */
+	line-height: 1.4;
 	min-height: 70vh;
 }
 
 p {
-	margin: 0 0 1.2em 0;
+	margin: 0 0 0em 0;
 	width: 100%;
 	max-width: 100%;
-	font-size: 0.95em;
+	font-size:1.2em;
 	font-weight: 400;
 	/* line-height: 1.7; */
 	color: #d0d0d0;
@@ -30,8 +30,8 @@ p {
 h1 {
 	margin: 0;
 	font-size: 3.5em;
-	font-weight: 700;
-	letter-spacing: -0.04em;
+	/* font-weight: 700; */
+	/* letter-spacing: -0.04em; */
 	background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -41,7 +41,7 @@ h1 {
 
 h4 {
 	margin: 0;
-	font-weight: 600;
+	/* font-weight: 600; */
 }
 
 iframe {
@@ -90,11 +90,24 @@ section {
 }
 
 .titolo-sezione {
-	margin-right: 2em;
-	font-size: 1.4em;
+	/* margin: 0 0 0rem 0; */
+	font-size: 2em;
 	color: #ffd500;
-	font-weight: 700;
+	text-align: left;
+	/* font-weight: 800; */
 	/* letter-spacing: -0.02em; */
+}
+
+.contenuto-sezione > .titolo-sezione {
+	grid-column: 1 / -1;
+	justify-self: left;
+	width: 100%;
+}
+
+section.filetto > .titolo-sezione {
+	grid-column: 1 / -1;
+	justify-self: left;
+	width: 100%;
 }
 
 .contenitore {
@@ -134,14 +147,14 @@ ul {
 /*lista*/
 li {
 	margin-bottom: 0.8em;
-	font-weight: 400;
+	/* font-weight: 400; */
 	/* line-height: 1.7; */
 	color: #d0d0d0;
 }
 
 li strong {
 	color: #ffd500;
-	font-weight: 600;
+	/* font-weight: 600; */
 }
 
 /* Sidebar left container */
@@ -165,7 +178,7 @@ li strong {
 	color: #e8e8e8;
 	padding: 0.85em 1.02em;
 	font-size: 0.81em;
-	font-weight: 600;
+	/* font-weight: 600; */
 	cursor: pointer;
 	transition: all 0.3s ease;
 	width: 100%;
@@ -193,7 +206,7 @@ li strong {
 .accordion-icon {
 	display: inline-block;
 	transition: transform 0.3s ease;
-	font-weight: 700;
+	/* font-weight: 700; */
 	margin-left: auto;
 }
 
@@ -303,7 +316,7 @@ li strong {
 	margin: 0;
 	font-size: 1.5em;
 	color: #ffd500;
-	font-weight: 700;
+	/* font-weight: 700; */
 	/* letter-spacing: -0.02em; */
 	flex: 1;
 }
