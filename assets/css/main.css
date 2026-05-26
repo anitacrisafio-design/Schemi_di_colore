@@ -180,10 +180,11 @@ section.conclusione {
 	flex-direction: column;
 }
 
-/* Sticky image/sidebar */
-.sketch {
+/* Sticky text only */
+.testo.sticky-text {
 	position: sticky;
 	top: 6em;
+	align-self: start;
 }
 
 /* Sidebar accordion */

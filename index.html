@@ -144,9 +144,38 @@
 							arbitraria</span> e <span class="accordion-link" data-target="codifica-calcolata">codifica
 							calcolata</span>. <br>
 					</p>
+			
+				<div class="highlight-box">
+					<p>
+						Dal punto di vista matematico, non esiste una funzione che permetta di ricavare automaticamente
+						il codice dai dati fisici dell’oggetto rappresentato.<br>
+						<br> La relazione è del tipo:<br>
+						Oggetto→Codice scelto convenzionalmente<br>
+						<br>
+						Ad esempio:<br>
+						Rosso Pantone→PANTONE 186 C<br>
+						<br>
+						Il codice non deriva da un calcolo matematico, ma da una scelta definita in una tabella o
+						catalogo.<br>
+						<br>
+
+					</p>
+			</div>	
 				</div>
-				<div class="sketch">
-					<iframe scrolling=no frameborder=0 src="./assets/sketches/01_trova_oklab/"></iframe>
+				<div class="highlight-box">
+					<p>
+						
+						La codifica calcolata invece utilizza formule matematiche per rappresentare informazioni
+						attraverso valori numerici.<br>
+						Il codice dipende direttamente da grandezze misurabili.<br>
+						<br>
+						dove:
+						<li> C è il codice finale,</li>
+						<li>x sono le grandezze fisiche,</li>
+						<li>f è una funzione matematica.</li>
+					</p>
+					<br>
+					<img style="width:100%;" src="./assets/img/formula_RGB.png">
 				</div>
 			</div>
 		</section>
@@ -184,7 +213,7 @@
 			</div>
 			<div class="contenuto-sezione">
 				<h4 class="titolo-sezione">SPAZIO DI COLORE</h4>
-				<div class="testo">
+				<div class="testo sticky-text">
 					<p>
 						Per comprendere meglio questo sistema bisogna introdurre il concetto di <span
 							class="accordion-link" data-target="modello-matematico">modello matematico</span> e <span
@@ -310,11 +339,12 @@
 					</div>
 				</div>
 				<div class="sketch">
-                    <iframe scrolling=no frameborder=0 width="350" height="350" src="./assets/sketches/02_RGB/"></iframe>
-                </div>
-                <div class="sketch">
-                    <iframe scrolling=no frameborder=0 width="350" height="350" src="./assets/sketches/02_CMYK/"></iframe>
-			</div>
+					<iframe scrolling=no frameborder=0 width="350" height="350"
+						src="./assets/sketches/02_RGB/"></iframe>
+
+					<iframe scrolling=no frameborder=0 width="350" height="350"
+						src="./assets/sketches/02_CMYK/"></iframe>
+				</div>
 
 		</section>
 
@@ -393,26 +423,24 @@
 							data-target="calibrazione">calibrazione </span> dei dispositivi.
 					</p>
 
-				<div class="highlight-box">
-					<p>
-						Quando un colore non può essere rappresentato
-						all'interno di uno specifico spazio colore, viene definito fuori gamut (out of gamut).
-						In questi casi il sistema deve approssimare il colore con la tonalità più vicina
-						disponibile, causando possibili differenze nella resa cromatica finale.<br>
-						<br>
-					</p>
+					<div class="highlight-box">
+						<p>
+							Quando un colore non può essere rappresentato
+							all'interno di uno specifico spazio colore, viene definito fuori gamut (out of gamut).
+							In questi casi il sistema deve approssimare il colore con la tonalità più vicina
+							disponibile, causando possibili differenze nella resa cromatica finale.<br>
+							<br>
+						</p>
+						<img style="width:100%;" src="./assets/img/formula_fattore_gamma.png">
+					</div>
+				</div>
 
-
-					<img style="width:100%;" src="./assets/img/formula_fattore_gamma.png">
+				<div class="sketch">
+					<iframe scrolling=no frameborder=0 width="100%" src="./assets/sketches/03_GAMMA/"></iframe>
 				</div>
 			</div>
-			
-			<div class="sketch">
-				<iframe scrolling=no frameborder=0 width="100%" src="./assets/sketches/03_GAMMA/"></iframe>
-			</div>
-		</div>
 
-	</section>
+		</section>
 
 
 		<!-- --------------------------------------------------------------------- -->
@@ -449,11 +477,12 @@
 				</div>
 
 				<div class="accordion-item">
-					<button class="accordion-button" data-accordion-key="spazio-colori-percettivi">Gli spazi colore percettivi <span
-							class="accordion-icon">+</span></button>
+					<button class="accordion-button" data-accordion-key="spazio-colori-percettivi">Gli spazi colore
+						percettivi <span class="accordion-icon">+</span></button>
 					<div class="accordion-content">
 						<p>
-							Gli spazi colore percettivi, sono progettati non solo per descrivere matematicamente un colore, ma
+							Gli spazi colore percettivi, sono progettati non solo per descrivere matematicamente un
+							colore, ma
 							soprattutto per rappresentarlo nel modo più vicino possibile alla percezione visiva umana.
 							<br>
 						</p>
@@ -464,8 +493,9 @@
 				<h4 class="titolo-sezione">SPAZIO DI COLORE PERCETTIVI</h4>
 				<div class="testo">
 					<p>
-						Un ulteriore sviluppo fondamentale nella rappresentazione dei colori riguarda gli <span class="accordion-link"
-							data-target="spazio-colori-percettivi">spazi colore percettivi </span>. Tra questi assumono
+						Un ulteriore sviluppo fondamentale nella rappresentazione dei colori riguarda gli <span
+							class="accordion-link" data-target="spazio-colori-percettivi">spazi colore percettivi
+						</span>. Tra questi assumono
 						particolare importanza i modelli CIELAB e OKLAB, utilizzati in ambiti professionali come color
 						correction, fotografia, computer grafica, rendering e progettazione digitale avanzata.
 					</p>
