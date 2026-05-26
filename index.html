@@ -46,6 +46,17 @@
 					}
 				});
 			});
+
+			const accordionLinks = document.querySelectorAll('.accordion-link');
+			accordionLinks.forEach(link => {
+				link.addEventListener('click', function () {
+					const targetKey = this.dataset.target;
+					const targetButton = document.querySelector(`.accordion-button[data-accordion-key="${targetKey}"]`);
+					if (targetButton) {
+						targetButton.click();
+					}
+				});
+			});
 		});
 	</script>
 
@@ -77,37 +88,14 @@
 				</div>
 		</header>
 
-		<!-- --------------------------------------------------------------------- -->
-
-		<section>
-			<div class="sidebar-left">
-				<h4 class="titolo-sezione">INTRODUZIONE:</h4>
-			</div>
-			</div>
-			<div class="contenuto-sezione">
-				<div class="testo">
-					<p>
-						La rappresentazione dei colori è un sistema fondamentale che permette di identificare,
-						descrivere e riprodurre i colori in modo preciso e standardizzato. Ogni volta che osserviamo
-						un’immagine su uno schermo, realizziamo una grafica, stampiamo un manifesto oppure scegliamo una
-						tinta per una parete, stiamo utilizzando dei sistemi di codifica cromatica. Senza questi sistemi
-						sarebbe impossibile ottenere uniformità tra dispositivi diversi o riprodurre sempre la stessa
-						tonalità. <br>
-
-					</p>
-				</div>
-				<div class="sketch">
-					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/01_trova_oklab/"></iframe>
-				</div>
-			</div>
-		</section>
+	
 		<!-- --------------------------------------------------------------------- -->
 
 		<section>
 			<div class="sidebar-left">
 				<h4 class="titolo-sezione">LA RAPPRESENTAZIONE DEI COLORI:</h4>
 				<div class="accordion-item">
-					<button class="accordion-button">La codifica arbitraria <span
+					<button class="accordion-button" data-accordion-key="codifica-arbitraria">La codifica arbitraria <span
 							class="accordion-icon">+</span></button>
 					<div class="accordion-content">
 						<p>
@@ -126,7 +114,7 @@
 					</div>
 				</div>
 				<div class="accordion-item">
-					<button class="accordion-button">La codifica calcolata <span
+					<button class="accordion-button" data-accordion-key="codifica-calcolata">La codifica calcolata <span
 							class="accordion-icon">+</span></button>
 					<div class="accordion-content">
 						<p>
@@ -155,7 +143,7 @@
 						ad ogni colore un codice identificativo.<br>
 						<br>
 						Questi metodi si dividono principalmente in due grandi
-						categorie: codifica arbitraria e codifica calcolata. <br>
+						categorie: <span class="accordion-link" data-target="codifica-arbitraria">codifica arbitraria</span> e <span class="accordion-link" data-target="codifica-calcolata">codifica calcolata</span>. <br>
 					</p>
 				</div>
 				<div class="sketch">
