@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Titolo Pagina</title>
+	<title>Schemi di Colore</title>
 
 	<meta name="author" content="Nome Cognome">
 	<meta name="description" content="Descrizione">
@@ -64,72 +64,63 @@
 		<!-- --------------------------------------------------------------------- -->
 
 		<section>
-			<h4 class="titolo-sezione">Sezione 1: <br>Introduzione</h4>
+			<h4 class="titolo-sezione">INTRODUZIONE: <br> La rappresentazione dei colori</h4>
 			<div class="contenuto-sezione">
 				<div class="testo">
 					<p>
-						I metodi sRGB e Oklab sono due modi diversi di rappresentare i colori digitali, entrambi nati
-						per risolvere uno specifico problema tecnico o visivo.
-						<li> sRGB è pensato per gli schermi ed è il modello
-							standard basato sui tre colori primari della luce (Rosso, Verde, Blu).
-							<br> Funziona tramite la sintesi additiva: combina tre luci (Rossa, Verde e Blu) per creare
-							tutti gli altri colori. I suoi valori vanno da 0 a 255. Se imposti (255, 0, 0) ottieni il
-							rosso puro;
-							se li azzeri tutti (0, 0, 0) ottieni il nero. Il difetto fondamentale di sRGB è che è stato
-							progettato per i monitor a tubo catodico degli anni '90, non per l'occhio umano.
-							Questo causa tre problemi principali ovvero che non è "percettivamente uniforme", distorce
-							le
-							tonalità e gestisce erroneamente la luminosità.
-						</li>
-						<li>Oklab è progettato per essere "percettivamente uniforme”: se aumenti la luminosità, il
-							colore cambia in modo naturale senza alterare la tonalità (evitando, ad esempio, che
-							il blu viri verso il viola). È perfetto per creare gradienti sfumati perfetti e palette
-							bilanciate e per evitare
-							effetti grigiastri.
-						</li>
-						<br> Qual’è il gradiente corretto?
-						<br> I computer calcolano i colori con la matematica, ma spesso l'occhio
-						umano non è d'accordo.
-						Guarda i due gradienti qui sotto: uno usa il sistema Oklab, progettato per imitare la
-						mente umana. Riesci a indovinare quale dei due è quello corretto in Oklab?
+						La rappresentazione dei colori è un sistema fondamentale che permette di identificare,
+						descrivere e riprodurre i colori in modo preciso e standardizzato. Ogni volta che osserviamo
+						un’immagine su uno schermo, realizziamo una grafica, stampiamo un manifesto oppure scegliamo una
+						tinta per una parete, stiamo utilizzando dei sistemi di codifica cromatica. Senza questi sistemi
+						sarebbe impossibile ottenere uniformità tra dispositivi diversi o riprodurre sempre la stessa
+						tonalità. <br>
+						<br>
+						Il problema principale nasce dal fatto che i colori percepiti dall’occhio umano sono
+						praticamente infiniti. Dire semplicemente “rosso”, “blu” o “verde” non è sufficiente, perché
+						esistono moltissime sfumature differenti della stessa tonalità. Per questo motivo è stato
+						necessario sviluppare dei metodi capaci di definire con esattezza un colore specifico. <br>
+						<br>
+						Alla base della rappresentazione dei colori esistono quindi dei metodi di codifica che associano
+						ad ogni colore un codice identificativo. Questi metodi si dividono principalmente in due grandi
+						categorie: codifica arbitraria e codifica calcolata. <br>
+
 					</p>
 					<div class="accordion-item">
-						<button class="accordion-button">Perché i colori digitali cambiano la realtà? <span
+						<button class="accordion-button">La codifica arbitraria <span
 								class="accordion-icon">+</span></button>
 						<div class="accordion-content">
 							<p>
-								Se hai sbagliato, hai già capito il problema…
-								<br> Per anni i computer hanno gestito i colori in
-								modo corretto dal punto di vista matematico, ma non percettivo. Sistemi come RGB e sRGB,
-								progettati
-								per i vecchi monitor CRT, rappresentano i colori attraverso la combinazione di rosso,
-								verde e blu,
-								senza considerare realmente il funzionamento della vista umana. <br> Di conseguenza,
-								variazioni
-								numericamente identiche possono apparire molto diverse all'occhio.
-								Lo spazio sRGB, standard storico del web, copre solo una parte dei colori percepibili
-								dall'uomo.
-								Anche i display moderni, capaci di mostrare tonalità molto più ricche, spesso non
-								riescono a
-								sfruttare tutto il loro potenziale a causa dei limiti dei vecchi sistemi colore. Questo
-								provoca
-								perdita di vivacità, precisione e coerenza tra dispositivi diversi. <br>
-								Con l'evoluzione del design digitale — tra HDR, dark mode e schermi sempre più avanzati
-								— questi
-								limiti sono diventati ancora più evidenti. Fenomeni come il banding, transizioni
-								cromatiche poco
-								uniformi e contrasti percepiti in modo errato derivano proprio dal fatto che il computer
-								tratta i
-								colori in modo uniforme, mentre l'occhio umano no.
-								<br> Anche modelli come HSL e HSV, molto usati nel design, non garantiscono risultati
-								visivamente
-								coerenti, rendendo più complessa la creazione di palette armoniose e interfacce
-								equilibrate.
-								Da queste problematiche nasce Oklab. Björn Ottosson sviluppò uno spazio colore
-								progettato non solo
-								per rappresentare i colori matematicamente, ma per rispecchiare il modo in cui vengono
-								realmente
-								percepiti dalle persone, rendendo il design digitale più naturale, coerente e accurato.
+								La codifica arbitraria assegna ai colori dei codici convenzionali scelti da aziende o
+								sistemi
+								standardizzati. Un esempio molto conosciuto è il sistema Pantone. In questo caso ogni
+								colore
+								possiede una sigla precisa che lo identifica in maniera univoca. Lo stesso principio
+								viene
+								utilizzato anche dai produttori di vernici, che associano ad ogni tonalità un codice
+								riportato
+								all’interno di cataloghi o campionari. Questo sistema è particolarmente utile nei
+								settori della
+								grafica, della stampa e del design, perché permette di comunicare con precisione una
+								determinata
+								tonalità senza possibilità di errore. <br>
+							</p>
+						</div>
+					</div>
+
+					<div class="accordion-item">
+						<button class="accordion-button">La codifica calcolata <span
+								class="accordion-icon">+</span></button>
+						<div class="accordion-content">
+							<p>
+								La codifica calcolata, invece, si basa su principi matematici e fisici. In questo caso
+								il colore
+								viene rappresentato attraverso valori numerici che descrivono caratteristiche fisiche
+								come
+								l’intensità luminosa oppure la quantità di colore utilizzata. Questo tipo di
+								rappresentazione
+								viene impiegato soprattutto nei dispositivi elettronici, nei monitor, nelle fotocamere
+								digitali
+								e nei software grafici. <br>
 							</p>
 						</div>
 					</div>
@@ -141,97 +132,39 @@
 		</section>
 
 		<!-- --------------------------------------------------------------------- -->
-	<section>
-			<h4 class="titolo-sezione">Sezione 2:<br>RGB</h4>
-			<div class="accordion-item">
-			<button class="accordion-button">I coni L, M e S <span
-			class="accordion-icon">+</span></button>
-			<div class="accordion-content">
-					<p>
-						Il grafico rappresenta la sensibilità dei tre tipi di coni dell’occhio umano rispetto alle
-						diverse lunghezze d’onda della luce visibile. Sull’asse orizzontale sono riportate le lunghezze
-						d’onda (\lambda) espresse in nanometri (nm), mentre sull’asse verticale è indicata la
-						sensibilità relativa dei fotorecettori. I coni si dividono in tre categorie: coni (S) (Short),
-						sensibili alle lunghezze d’onda corte e quindi alle tonalità blu; coni (M) (Medium),
-						maggiormente sensibili alle lunghezze d’onda medie associate al verde; e coni (L) (Long), più
-						sensibili alle lunghezze d’onda lunghe associate al rosso. I picchi delle tre curve si trovano
-						approssimativamente in corrispondenza di (\lambda \approx 445,nm) per i coni (S), (\lambda
-						\approx 545,nm) per i coni (M) e (\lambda \approx 570,nm) per i coni (L). La caratteristica più
-						importante del grafico è la sovrapposizione delle curve: un singolo colore non attiva un solo
-						tipo di cono, ma stimola contemporaneamente più fotorecettori con intensità differenti. La
-						percezione cromatica nasce quindi dal confronto tra le risposte relative dei coni, ad esempio
-						una luce gialla intorno ai (580,nm) produce una forte attivazione dei coni (L), una risposta
-						significativa dei coni (M) e una risposta quasi nulla dei coni (S). Il cervello interpreta
-						questa combinazione come giallo. In termini generali, il sistema visivo elabora i colori
-						confrontando le attivazioni relative (L), (M) e (S), ad esempio il rosso viene percepito quando
-						(L \gg M,S). Questo principio è alla base della visione tricromatica umana e spiega anche il
-						funzionamento dei display RGB, che ricreano i colori stimolando i tre tipi di coni con
-						differenti intensità luminose.
-					</p>
-				</div>
-				<div class="sketch">
-					<br>
-					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/02_RGB/"></iframe>
-				</div>
-			</div>
-		</section>
-
-		<!-- --------------------------------------------------------------------- -->
-
 		<section>
-			<h4 class="titolo-sezione">Sezione 3:<br>CIELAB</h4>
+			<h4 class="titolo-sezione">SPAZIO DI COLORE:</h4>
 			<div class="contenuto-sezione">
 				<div class="testo">
 					<p>
-						Quando guardiamo un colore su uno schermo pensiamo che il computer lo rappresenti esattamente
-						per
-						quello che è. In realtà, per molti anni i software hanno “calcolato” i colori in modo corretto
-						dal
-						punto di vista matematico, ma spesso sbagliato dal punto di vista percettivo. Questo significa
-						che
-						il colore mostrato dallo schermo non sempre viene percepito dall’occhio umano nel modo previsto
-						dai
-						designer.
-						Il problema nasce dal fatto che i computer lavorano principalmente con modelli come RGB. In
-						questo
-						sistema ogni colore viene creato mescolando luce rossa, verde e blu. È un metodo efficiente per
-						gli
-						schermi, ma non tiene realmente conto del funzionamento della vista umana. L’occhio e il
-						cervello,
-						infatti, non interpretano i colori in maniera lineare. Alcune variazioni di luminosità sembrano
-						molto più forti di altre, anche quando i numeri cambiano nello stesso modo.
+						Per comprendere meglio questo sistema bisogna introdurre il concetto di modello matematico e dello spazio colore. <br>
+						
 					</p>
+					<div class="accordion-item">
+						<button class="accordion-button">Il modello matematico <span
+								class="accordion-icon">+</span></button>
+						<div class="accordion-content">
+							<p>
+								Il concetto di modello di colore deriva direttamente dal modello matematico. Un modello matematico è una rappresentazione quantitativa di un fenomeno reale che consente di descriverlo attraverso formule, relazioni e valori numerici. Nel caso dei colori, il modello matematico permette di tradurre la percezione cromatica in coordinate numeriche organizzate all’interno di uno spazio tridimensionale o multidimensionale. <br>
+							</p>
+						</div>
+					</div>
+
+					<div class="accordion-item">
+						<button class="accordion-button">Lo spazio colori <span
+								class="accordion-icon">+</span></button>
+						<div class="accordion-content">
+							<p>
+								Uno spazio dei colori, infatti, è una rappresentazione geometrica nella quale ogni colore occupa una posizione specifica determinata da coordinate numeriche. In matematica e informatica, fenomeni dipendenti da più grandezze possono essere rappresentati tramite grafici multidimensionali; lo stesso principio viene applicato alla rappresentazione cromatica. Ogni asse dello spazio colore rappresenta una componente fondamentale del colore stesso. <br>
+							</p>
+						</div>
+					</div>
 				</div>
 				<div class="sketch">
-					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/03_CIELAB/"></iframe>
+					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/01_trova_oklab/"></iframe>
 				</div>
 			</div>
 		</section>
-
-
-
-
-		<section>
-			<h4 class="titolo-sezione">Sezione 4:<br>OKLAB</h4>
-		<div class="contenuto-sezione">
-				<div class="testo">
-					<p>
-						La fonte principale è l'articolo originale scritto da Björn Ottosson, dove lui stesso spiega
-						perché
-						ha creato Oklab e quali limiti voleva risolvere nei sistemi colore esistenti. (Björn Ottosson)
-						In particolare:
-						<li> il concetto di "perceptual color space", </li>
-						<li> i problemi di uniformità nei gradienti, </li>
-						<li> l'idea di prevedere meglio luminosità, hue e chroma, </li>
-						<li> e la struttura con componenti L, a e b </li>
-					</p>
-				</div>
-				<div class="sketch">
-					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/04_OKLAB/"></iframe>
-				</div>
-			</div>
-		</section>
-
 
 		<!-- --------------------------------------------------------------------- -->
 
