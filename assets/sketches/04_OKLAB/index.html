@@ -1,76 +1,24 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta charset="UTF-8">
+	<!-- p5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
 
-  <title>Laboratorio Oklab vs RGB</title>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body{
-      background:#0f1115;
-      overflow:hidden;
-      font-family:Arial, Helvetica, sans-serif;
-      color:white;
-    }
-
-    canvas{
-      display:block;
-    }
-
-    .info{
-      position:absolute;
-      bottom:20px;
-      left:20px;
-      background:rgba(255,255,255,0.05);
-      padding:16px;
-      border-radius:16px;
-      backdrop-filter:blur(10px);
-      width:320px;
-      line-height:1.5;
-    }
-
-    .info h2{
-      margin-bottom:10px;
-      font-size:20px;
-    }
-
-    .info p{
-      font-size:14px;
-      opacity:0.8;
-    }
-  </style>
+  <!-- chroma.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Esempio 0: template
+</title>
+	<style>
+		body {
+			background-color: rgb(255, 255, 255);
+			margin: 0;
+		}
+	</style>
 </head>
-
 <body>
-
-  <div class="info">
-    <h2>Laboratorio Oklab</h2>
-
-    <p>
-      Confronta il comportamento dei colori in
-      <strong>RGB</strong> e <strong>Oklab</strong>.
-      <br><br>
-
-      Muovi gli slider per modificare:
-      <br>
-      • <strong>L</strong> → luminosità
-      <br>
-      • <strong>a</strong> → verde ↔ rosso
-      <br>
-      • <strong>b</strong> → blu ↔ giallo
-    </p>
-  </div>
-
-  <script src="sketch.js"></script>
-
-</body>
+	<script src="vec2.js"></script>
+	<script src="sketch.js"></script>
+	</body>
 </html>

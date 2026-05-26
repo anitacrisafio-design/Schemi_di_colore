@@ -167,12 +167,8 @@ li strong {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-<<<<<<< HEAD
 	gap: 0.8em;
 	border-radius: 6px;
-=======
-	border-radius: 5px;
->>>>>>> 9ebc86c91b52f6f6017b024b8a8418821c7bd8eb
 }
 
 .accordion-button:hover {

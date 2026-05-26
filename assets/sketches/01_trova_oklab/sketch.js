@@ -232,6 +232,12 @@ function generateGradients() {
 // DISEGNA RETTANGOLO
 function drawGradientRect(g) {
 
+  // Clipping arrotondato per evitare che il colore esca dal bordo
+  drawingContext.save();
+  drawingContext.beginPath();
+  roundedRectPath(g.x, g.y, g.w, g.h, 8);
+  drawingContext.clip();
+
   // Disegna la sfumatura
   for (let i = 0; i < g.w; i++) {
 
@@ -264,6 +270,8 @@ function drawGradientRect(g) {
     );
   }
 
+  drawingContext.restore();
+
   // Bordo bianco
   noFill();
 
@@ -278,6 +286,19 @@ function drawGradientRect(g) {
     g.h,
     8
   );
+}
+
+function roundedRectPath(x, y, w, h, r) {
+  drawingContext.moveTo(x + r, y);
+  drawingContext.lineTo(x + w - r, y);
+  drawingContext.quadraticCurveTo(x + w, y, x + w, y + r);
+  drawingContext.lineTo(x + w, y + h - r);
+  drawingContext.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  drawingContext.lineTo(x + r, y + h);
+  drawingContext.quadraticCurveTo(x, y + h, x, y + h - r);
+  drawingContext.lineTo(x, y + r);
+  drawingContext.quadraticCurveTo(x, y, x + r, y);
+  drawingContext.closePath();
 }
 
 // sRGB
