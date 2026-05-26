@@ -165,9 +165,14 @@ li strong {
 	font-family: inherit;
 	letter-spacing: -0.015em;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
+<<<<<<< HEAD
+	gap: 0.8em;
+	border-radius: 6px;
+=======
 	border-radius: 5px;
+>>>>>>> 9ebc86c91b52f6f6017b024b8a8418821c7bd8eb
 }
 
 .accordion-button:hover {
@@ -185,6 +190,7 @@ li strong {
 	display: inline-block;
 	transition: transform 0.3s ease;
 	font-weight: 700;
+	order: -1;
 }
 
 .accordion-button.active .accordion-icon {
@@ -214,6 +220,98 @@ li strong {
 
 .accordion-content p {
 	padding: 1em 0;
+	margin: 0;
+}
+
+/* Drawer styles */
+.drawer-trigger {
+	position: fixed;
+	left: 1.5em;
+	top: 1.5em;
+	width: 50px;
+	height: 50px;
+	background: rgba(255, 213, 0, 0.1);
+	border: 2px solid rgba(255, 213, 0, 0.4);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	font-size: 1.5em;
+	transition: all 0.3s ease;
+	z-index: 100;
+}
+
+.drawer-trigger:hover {
+	background: rgba(255, 213, 0, 0.2);
+	border-color: rgba(255, 213, 0, 0.7);
+	transform: scale(1.1);
+}
+
+.drawer {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 350px;
+	height: 100vh;
+	background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+	border-right: 2px solid rgba(255, 213, 0, 0.3);
+	transform: translateX(-100%);
+	transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	z-index: 99;
+	display: flex;
+	flex-direction: column;
+	backdrop-filter: blur(10px);
+	box-shadow: 10px 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.drawer.open {
+	transform: translateX(0);
+}
+
+.drawer-header {
+	padding: 2em 1.5em;
+	border-bottom: 2px solid rgba(255, 213, 0, 0.3);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.drawer-header h2 {
+	margin: 0;
+	font-size: 1.5em;
+	color: #ffd500;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	flex: 1;
+}
+
+.close-drawer {
+	background: none;
+	border: none;
+	color: #d0d0d0;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 0;
+	transition: color 0.3s ease;
+	flex-shrink: 0;
+	margin-left: 1em;
+}
+
+.close-drawer:hover {
+	color: #ffd500;
+}
+
+.drawer-content {
+	padding: 2em 1.5em;
+	overflow-y: auto;
+	flex: 1;
+}
+
+.drawer-content p {
+	color: #d0d0d0;
+	line-height: 1.8;
+	font-size: 0.95em;
 	margin: 0;
 }
 
@@ -261,5 +359,18 @@ li strong {
 
 	.accordion-button {
 		font-size: 0.85em;
+	}
+
+	.drawer {
+		width: 100%;
+		max-width: 280px;
+	}
+
+	.drawer-trigger {
+		left: 1em;
+		top: 1em;
+		width: 45px;
+		height: 45px;
+		font-size: 1.2em;
 	}
 }
