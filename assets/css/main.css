@@ -60,7 +60,7 @@ iframe {
 	width: 100%;
 	height: auto;
 	aspect-ratio: 1 / 1;
-	min-height: 10px;
+	min-height: 400px;
 }
 
 iframe:hover {
