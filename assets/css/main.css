@@ -13,8 +13,8 @@ body {
 	font-style: normal;
 	font-variation-settings: "slnt" 0;
 	letter-spacing: -0.015em;
-	line-height: 1.6;
-	min-height: 100vh;
+	line-height: 1;
+	min-height: 70vh;
 }
 
 p {
