@@ -197,6 +197,16 @@ li strong {
 	transform: rotate(45deg);
 }
 
+.accordion-link {
+	color: #ffd500;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.accordion-link:hover {
+	color: #fff4a0;
+}
+
 .accordion-content {
 	max-height: 0;
 	overflow: hidden;
