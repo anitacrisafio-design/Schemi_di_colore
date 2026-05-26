@@ -1,70 +1,168 @@
+let inputR;
+let inputG;
+let inputB;
+
 function setup() {
-	createCanvas(windowWidth, windowHeight)
+
+	createCanvas(500, 500);
+
+	textFont('Arial');
+
+	// INPUT ROSSO
+	inputR = createInput("255");
+	styleInput(inputR, 20);
+
+	// INPUT VERDE
+	inputG = createInput("120");
+	styleInput(inputG, 100);
+
+	// INPUT BLU
+	inputB = createInput("80");
+	styleInput(inputB, 180);
 }
 
 function draw() {
 
-	const raggio = 120
-	const angolo = mouseX / width * TAU * 2
-	const c = cos(angolo)
-	const s = sin(angolo)
-	const t = tan(angolo)
-	const x = c * raggio
-	const y = s * raggio
+	background(8);
 
-	background(255)
+	let r = constrain(parseInt(inputR.value()) || 0, 0, 255);
+	let g = constrain(parseInt(inputG.value()) || 0, 0, 255);
+	let b = constrain(parseInt(inputB.value()) || 0, 0, 255);
 
-	// Valori numerici
-	noStroke()
-	fill(0)
-	text("ang: " + angolo.toFixed(2), 10, 30 + 16 * 0)
+	// pannello
+	drawPanel();
 
-	fill(200,0,0)
-	text("cos: " +      c.toFixed(2), 10, 30 + 16 * 1)
+	push();
 
-	fill(0,200,0)
-	text("sin: " +      s.toFixed(2), 10, 30 + 16 * 2)
+	translate (width / 2, height / 2 + 20);
 
-	fill(0,0,200)
-	text("tan: " +      t.toFixed(2), 10, 30 + 16 * 3)
+	scale(0.82);
 
-	translate(width/2, height/2)
+	drawTriangle();
 
-	noFill()
+	drawColorPoint(r, g, b);
 
-	// Assi
-	strokeWeight(1)
-	stroke(0, 80)
-	line(-width/2, 0, width/2, 0)
-	line(0, -height/2, 0, height/2)
+	pop();
 
-	// Cerchio
-	ellipse(0, 0, raggio * 2, raggio * 2)
+	drawColorPreview(r, g, b);
 
-	// Raggio
-	line(0, 0, x, y)
-
-	// Arco
-	stroke(0)
-	strokeWeight(3)
-	arc(0, 0, 50, 50, 0, angolo)
-
-
-	// Coseno
-	stroke(200,0,0)
-	line(x, 0, x, y)
-
-	// Seno
-	stroke(0,200,0)
-	strokeWeight(3)
-	line(0, y, x, y)
-
-	// Tangente
-	stroke(0,0,200)
-	line(x, y, x + y * t, y - x * t)
-
+	drawLabels();
 }
 
-function keyPressed() {
+function styleInput(input, x) {
 
+	input.position(x, 20);
+
+	input.size(50);
+
+	input.style('background', '#1e1e1e');
+	input.style('color', 'white');
+	input.style('border', '1px solid #444');
+	input.style('border-radius', '8px');
+	input.style('padding', '8px');
+	input.style('font-size', '16px');
+	input.style('outline', 'none');
+}
+
+function drawPanel() {
+
+	noStroke();
+
+	fill(18);
+
+	rect(10, 10, 430, 480, 24);
+}
+
+function drawTriangle() {
+
+	let rx = 0;
+	let ry = -170;
+
+	let gx = -170;
+	let gy = 120;
+
+	let bx = 170;
+	let by = 120;
+
+	// triangolo
+	strokeWeight(3);
+
+	stroke(255, 70);
+
+	line(rx, ry, gx, gy);
+	line(gx, gy, bx, by);
+	line(bx, by, rx, ry);
+
+	// vertici RGB
+	noStroke();
+
+	fill(255, 0, 0);
+	ellipse(rx, ry, 28);
+
+	fill(0, 255, 0);
+	ellipse(gx, gy, 28);
+
+	fill(0, 120, 255);
+	ellipse(bx, by, 28);
+}
+
+function drawColorPoint(r, g, b) {
+
+	let total = r + g + b;
+
+	if (total === 0) {
+		total = 1;
+	}
+
+	// coordinate baricentriche
+	let rn = r / total;
+	let gn = g / total;
+	let bn = b / total;
+
+	// vertici triangolo
+	let rx = 0;
+	let ry = -170;
+
+	let gx = -170;
+	let gy = 120;
+
+	let bx = 170;
+	let by = 120;
+
+	// posizione matematica
+	let x =
+		rn * rx +
+		gn * gx +
+		bn * bx;
+
+	let y =
+		rn * ry +
+		gn * gy +
+		bn * by;
+
+	noStroke();
+
+	fill(r, g, b);
+
+	ellipse(x, y, 34);
+}
+
+function drawColorPreview(r, g, b) {
+
+	noStroke();
+
+	fill(r, g, b);
+
+	rect(340, 30, 80, 80, 16);
+}
+
+function drawLabels() {
+
+	fill(255);
+
+	textSize(15);
+
+	text("R", 42, 75);
+	text("G", 122, 75);
+	text("B", 202, 75);
 }
