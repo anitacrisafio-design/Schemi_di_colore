@@ -156,7 +156,6 @@ li strong {
 	font-family: inherit;
 	letter-spacing: -0.015em;
 	display: flex;
-	justify-content: space-between;
 	justify-content: flex-start;
 	align-items: center;
 	gap: 0.8em;
