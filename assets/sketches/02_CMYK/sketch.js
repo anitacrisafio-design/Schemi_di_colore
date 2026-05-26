@@ -1,235 +1,316 @@
-let inputC;
-let inputM;
-let inputY;
-let inputK;
+/* =========================
+   VARIABILI GLOBALI
+   ========================= */
 
+// Array input CMYK
+let inputs = [];
+
+// Colore corrente
+let currentCMYK = {
+	c: 100,
+	m: 40,
+	y: 20,
+	k: 0
+};
+
+// Movimento col mouse attivo
+let movePoint = false;
+
+// Dimensione quadrato
+const squareSize = 260;
+
+/* =========================
+   SETUP
+   ========================= */
 function setup() {
 
-  createCanvas(500, 500);
+	createCanvas(500, 500);
 
-  textFont('Arial');
+	textFont('Arial');
 
-  // INPUT CMYK
-  inputC = createInput("100");
-  styleInput(inputC, 20);
+	["100", "40", "20", "0"].forEach((value, i) => {
 
-  inputM = createInput("40");
-  styleInput(inputM, 100);
+		let input = createInput(value);
 
-  inputY = createInput("20");
-  styleInput(inputY, 180);
+		styleInput(input, 20 + i * 80);
 
-  inputK = createInput("0");
-  styleInput(inputK, 260);
+		inputs.push(input);
+	});
 }
 
+/* =========================
+   DRAW
+   ========================= */
 function draw() {
 
-  background(8);
+	background('black');
 
-  // valori CMYK
-  let c = constrain(parseInt(inputC.value()) || 0, 0, 100);
-  let m = constrain(parseInt(inputM.value()) || 0, 0, 100);
-  let y = constrain(parseInt(inputY.value()) || 0, 0, 100);
-  let k = constrain(parseInt(inputK.value()) || 0, 0, 100);
+	// Se NON stiamo usando il mouse
+	// usa i valori degli input
+	if (!movePoint) {
 
-  // conversione matematica
-  let rgb = cmykToRgb(c, m, y, k);
+		let values = inputs.map(input =>
+			constrain(parseInt(input.value()) || 0, 0, 100)
+		);
 
-  drawPanel();
+		currentCMYK.c = values[0];
+		currentCMYK.m = values[1];
+		currentCMYK.y = values[2];
+		currentCMYK.k = values[3];
+	}
 
-  push();
+	// Se SPACE è premuto
+	// aggiorna dal mouse
+	if (movePoint) {
+		updateCMYKFromMouse();
+	}
 
-  translate(width / 2, height / 2 + 30);
+	// Conversione RGB
+	let rgb = cmykToRgb(
+		currentCMYK.c,
+		currentCMYK.m,
+		currentCMYK.y,
+		currentCMYK.k
+	);
 
-  scale(0.72);
+	drawPanel();
 
-  drawCMYKSquare();
+	push();
 
-  drawColorPoint(c, m, y, k);
+	translate(width / 2, height / 2 + 30);
 
-  pop();
+	scale(0.72);
 
-  drawColorPreview(rgb.r, rgb.g, rgb.b);
+	drawCMYKSquare();
 
-  drawLabels();
+	drawColorPoint(
+		currentCMYK.c,
+		currentCMYK.m,
+		currentCMYK.y,
+		currentCMYK.k
+	);
+
+	pop();
+
+	drawColorPreview(rgb);
+
+	drawLabels();
 }
 
+/* =========================
+   STYLE INPUT
+   ========================= */
 function styleInput(input, x) {
 
-  input.position(x, 20);
+	input.position(x, 20);
 
-  input.size(60);
+	input.size(50);
 
-  input.style('background', '#1e1e1e');
-  input.style('color', 'white');
-  input.style('border', '1px solid #444');
-  input.style('border-radius', '8px');
-  input.style('padding', '8px');
-  input.style('font-size', '16px');
-  input.style('outline', 'none');
+	input.style('background', 'black');
+	input.style('color', 'white');
+	input.style('border', '1px solid #000000');
+	input.style('border-radius', '8px');
+	input.style('padding', '8px');
+	input.style('font-size', '16px');
 }
 
+/* =========================
+   DRAW PANEL
+   ========================= */
 function drawPanel() {
 
-  noStroke();
+	noStroke();
 
-  fill(18);
+	fill(18);
 
-  rect(10, 10, 480, 480, 24);
+	rect(10, 10, 480, 480, 24);
 }
 
-/*
-====================================================
-QUADRATO CMYK
-====================================================
-
-Ogni angolo rappresenta:
-
-alto-sinistra  = Cyan
-alto-destra    = Magenta
-basso-destra   = Yellow
-basso-sinistra = Black
-
-====================================================
-*/
-
+/* =========================
+   DRAW CMYK SQUARE
+   ========================= */
 function drawCMYKSquare() {
 
-  let s = 260;
+	let s = squareSize;
 
-  let left = -s / 2;
-  let right = s / 2;
+	let left = -s / 2;
+	let top = -s / 2;
 
-  let top = -s / 2;
-  let bottom = s / 2;
+	// Bordo quadrato
+	stroke(255, 70);
 
-  // quadrato
-  stroke(255, 70);
+	strokeWeight(3);
 
-  strokeWeight(3);
+	noFill();
 
-  noFill();
+	rect(left, top, s, s);
 
-  rect(left, top, s, s);
+	// Vertici colore
+	const points = [
+		{ x: left,  y: top,  color: [0, 255, 255] }, // C
+		{ x: -left, y: top,  color: [255, 0, 255] }, // M
+		{ x: -left, y: -top, color: [255, 255, 0] }, // Y
+		{ x: left,  y: -top, color: [20] }           // K
+	];
 
-  // vertici CMYK
-  noStroke();
+	points.forEach((p, i) => {
 
-  // C
-  fill(0, 255, 255);
-  ellipse(left, top, 30);
+		if (i === 3) {
+			stroke(180);
+			strokeWeight(1);
+		} else {
+			noStroke();
+		}
 
-  // M
-  fill(255, 0, 255);
-  ellipse(right, top, 30);
+		fill(...p.color);
 
-  // Y
-  fill(255, 255, 0);
-  ellipse(right, bottom, 30);
+		ellipse(p.x, p.y, 30);
+	});
 
-  // K
- fill(20);
-
-stroke(180);
-
-strokeWeight(1);
-
-ellipse(left, bottom, 30);
-
-noStroke();
+	noStroke();
 }
 
+/* =========================
+   DRAW COLOR POINT
+   =========================
+   Disegna il pallino colore.
+*/
 function drawColorPoint(c, m, y, k) {
 
-  /*
-  Coordinate matematiche nel quadrato
-  */
+	let x = map(m - c, -100, 100, -130, 130);
 
-  let x =
-    map(
-      m - c,
-      -100,
-      100,
-      -130,
-      130
-    );
+	let yy = map(y - k, -100, 100, -130, 130);
 
-  let yy =
-    map(
-      y - k,
-      -100,
-      100,
-      -130,
-      130
-    );
+	let rgb = cmykToRgb(c, m, y, k);
 
-  // colore risultante
-  let rgb = cmykToRgb(c, m, y, k);
+	noStroke();
 
-  noStroke();
+	fill(rgb.r, rgb.g, rgb.b);
 
-  fill(rgb.r, rgb.g, rgb.b);
-
-  ellipse(x, yy, 34);
+	ellipse(x, yy, 34);
 }
 
-function drawColorPreview(r, g, b) {
-
-  noStroke();
-
-  fill(r, g, b);
-
-  rect(390, 30, 80, 80, 16);
-}
-
-function drawLabels() {
-
-  fill(255);
-
-  textSize(15);
-
-  text("C", 42, 75);
-  text("M", 122, 75);
-  text("Y", 202, 75);
-  text("K", 282, 75);
-}
-
-/*
-====================================================
-MODELLO MATEMATICO CMYK
-====================================================
-
-CMYK è uno spazio colore sottrattivo.
-
-Formula:
-
-R = 255 × (1 − C) × (1 − K)
-G = 255 × (1 − M) × (1 − K)
-B = 255 × (1 − Y) × (1 − K)
-
-====================================================
+/* =========================
+   UPDATE CMYK FROM MOUSE
+   =========================
+   Quando SPACE è premuto:
+   - prende il mouse
+   - lo converte in CMYK
 */
+function updateCMYKFromMouse() {
 
+	// Coordinate mouse nel quadrato
+	let mx = (mouseX - width / 2) / 0.72;
+	let my = (mouseY - (height / 2 + 30)) / 0.72;
+
+	// Limiti quadrato
+	let half = squareSize / 2;
+
+	// Controlla se il mouse è dentro
+	if (
+		mx >= -half &&
+		mx <= half &&
+		my >= -half &&
+		my <= half
+	) {
+
+		// Conversione posizione → CMYK
+		currentCMYK.m = map(mx, -130, 130, 0, 100);
+		currentCMYK.c = 100 - currentCMYK.m;
+
+		currentCMYK.y = map(my, -130, 130, 0, 100);
+		currentCMYK.k = 100 - currentCMYK.y;
+
+		// Arrotonda
+		Object.keys(currentCMYK).forEach(key => {
+			currentCMYK[key] =
+				constrain(round(currentCMYK[key]), 0, 100);
+		});
+
+		// Aggiorna input
+		inputs[0].value(currentCMYK.c);
+		inputs[1].value(currentCMYK.m);
+		inputs[2].value(currentCMYK.y);
+		inputs[3].value(currentCMYK.k);
+	}
+}
+
+/* =========================
+   DRAW COLOR PREVIEW
+   ========================= */
+function drawColorPreview(rgb) {
+
+	noStroke();
+
+	fill(rgb.r, rgb.g, rgb.b);
+
+	rect(390, 30, 80, 80, 16);
+}
+
+/* =========================
+   DRAW LABELS
+   ========================= */
+function drawLabels() {
+drawInstructions();
+	fill(255);
+
+	textSize(15);
+
+	["C", "M", "Y", "K"].forEach((label, i) => {
+
+		text(label, 42 + i * 80, 75);
+	});
+}
+/* =========================
+   DRAW INSTRUCTIONS
+   =========================
+   Disegna il testo istruzioni sotto RGB.
+*/
+function drawInstructions() {
+
+	fill(180);
+
+	textSize(12);
+
+	textAlign(LEFT);
+
+	text(
+		"Puoi cambiare colore scrivendo i valori CMYK oppure tenendo premuto SPACE mentre muovi il mouse nel triangolo (per farlo seleziona il LAB).",
+		20,
+		105,
+		200
+	);
+}
+/* =========================
+   CMYK TO RGB
+   ========================= */
 function cmykToRgb(c, m, y, k) {
 
-  c /= 100;
-  m /= 100;
-  y /= 100;
-  k /= 100;
+	[c, m, y, k] = [c, m, y, k].map(v => v / 100);
 
-  let r =
-    255 * (1 - c) * (1 - k);
-
-  let g =
-    255 * (1 - m) * (1 - k);
-
-  let b =
-    255 * (1 - y) * (1 - k);
-
-  return {
-    r: r,
-    g: g,
-    b: b
-  };
+	return {
+		r: 255 * (1 - c) * (1 - k),
+		g: 255 * (1 - m) * (1 - k),
+		b: 255 * (1 - y) * (1 - k)
+	};
 }
+
+/* =========================
+   KEY EVENTS
+   =========================
+   SPACE attiva/disattiva
+   il movimento col mouse.
+*/
+function keyPressed() {
+
+	if (key === ' ') {
+		movePoint = true;
+	}
+}
+
+function keyReleased() {
+
+	if (key === ' ') {
+		movePoint = false;
+	}
+} 
