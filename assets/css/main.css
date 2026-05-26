@@ -71,6 +71,7 @@ header {
 section {
 	display: grid;
 	grid-template-columns: 1fr 4fr;
+	gap: 3em;
 	margin-bottom: 5em;
 	padding-top: 0.5em;
 	scroll-margin-top: 2em;
@@ -86,8 +87,6 @@ section {
 	color: #ffd500;
 	font-weight: 700;
 	letter-spacing: -0.02em;
-	position: sticky;
-	top: 4em;
 }
 
 .contenitore {
@@ -137,17 +136,27 @@ li strong {
 	font-weight: 600;
 }
 
+/* Sidebar left container */
+.sidebar-left {
+	display: flex;
+	flex-direction: column;
+	gap: 0.68em;
+}
+
 /* Accordion styles */
 .accordion-item {
-	margin: 1.5em 0;
+	margin: 1.275em 0;
+	padding: 0.68em 0.85em;
+	border-radius: 8.5px;
+	background: rgba(255, 255, 255, 0.06);
 }
 
 .accordion-button {
 	background: none;
 	border: 2px solid rgba(255, 213, 0, 0.4);
 	color: #e8e8e8;
-	padding: 1em 1.2em;
-	font-size: 0.95em;
+	padding: 0.85em 1.02em;
+	font-size: 0.81em;
 	font-weight: 600;
 	cursor: pointer;
 	transition: all 0.3s ease;
@@ -158,8 +167,12 @@ li strong {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+<<<<<<< HEAD
 	gap: 0.8em;
 	border-radius: 6px;
+=======
+	border-radius: 5px;
+>>>>>>> 9ebc86c91b52f6f6017b024b8a8418821c7bd8eb
 }
 
 .accordion-button:hover {
