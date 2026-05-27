@@ -78,7 +78,7 @@ function draw() {
 
   push();
 
-  translate(230, 300, -40);
+  translate(255, 325, -40);
 
   scale(0.82);
 
@@ -245,7 +245,7 @@ function drawColorPreview(rgb) {
 
   fill(rgb.r, rgb.g, rgb.b);
 
-  rect(320, 20, 90, 90, 16);
+  rect(370, 20, 90, 90, 16);
 }
 
 /* =========================

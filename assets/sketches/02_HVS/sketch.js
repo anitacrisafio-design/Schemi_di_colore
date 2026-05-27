@@ -27,7 +27,7 @@ const step = 14;
    ========================= */
 function setup() {
 
-	createCanvas(500, 500);
+	createCanvas(600, 600);
 
 	colorMode(HSB, 360, 100, 100);
 
@@ -74,7 +74,7 @@ function draw() {
 	push();
 
 	// Align composition with 02_RGB (slight vertical offset + scale)
-	translate(width / 2, height / 2 + 45);
+	translate(280, 290 + 45);
 
 	scale(0.90);
 
@@ -257,7 +257,7 @@ function drawHSVGuide() {
 
 	text(
 		"S = Saturation",
-		wheelRadius / 2,
+		200,
 		-18
 	);
 
@@ -275,8 +275,8 @@ function drawHSVGuide() {
 		);
 
 		rect(
-			-wheelRadius / 2 + i * 1.7,
-			wheelRadius + 70,
+			-85 + i * 1.7,
+			wheelRadius + 22,
 			4,
 			14
 		);
@@ -301,7 +301,7 @@ function drawConnections() {
 	// Linea hue
 	stroke(255, 30);
 
-	strokeWeight(1.5);
+	strokeWeight(2);
 
 	line(0, 0, x, y);
 
@@ -328,7 +328,7 @@ function drawColorPoint() {
 
 	stroke(255);
 
-	strokeWeight(3);
+	strokeWeight(2);
 
 	fill(
 		currentHSV.h,
@@ -336,7 +336,7 @@ function drawColorPoint() {
 		currentHSV.v
 	);
 
-	circle(x, y, 28);
+	circle(x, y, 25);
 }
 
 /* =========================
@@ -381,7 +381,7 @@ function drawPreview() {
 		currentHSV.v
 	);
 
-	rect(330, 20, 90, 90, 16);
+	rect(380, 20, 90, 90, 16);
 }
 
 /* =========================
@@ -414,7 +414,7 @@ function drawInstructions() {
 	text(
 		"Ogni pallino rappresenta un colore HSV. Hue = direzione | Saturation = distanza | Value = luminosità.\nTieni premuto SPACE e muovi il mouse nella ruota per cambiare colore.",
 		25,
-		96,
+		110,
 		200
 	);
 }

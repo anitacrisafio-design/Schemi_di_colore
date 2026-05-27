@@ -23,7 +23,7 @@ const vertices = [
    ========================= */
 function setup() {
 
-	createCanvas(500, 500);
+	createCanvas(600, 600);
 
 	textFont('Arial');
 
@@ -68,7 +68,7 @@ function draw() {
 
 	push();
 
-	translate(width / 2, height / 2 + 20);
+	translate(260, 320 + 40);
 
 	scale(0.82);
 
@@ -233,7 +233,7 @@ function drawColorPreview(r, g, b) {
 
 	fill(r, g, b);
 
-	rect(330, 20, 90, 90, 16);
+	rect(380, 20, 90, 90, 16);
 }
 
 /* =========================
@@ -266,7 +266,7 @@ function drawInstructions() {
 	text(
 		"Puoi cambiare colore scrivendo i valori RGB oppure tenendo premuto SPACE mentre muovi il mouse nel triangolo (per farlo seleziona il LAB).",
 		20,
-		105,
+		110,
 		200
 	);
 }
