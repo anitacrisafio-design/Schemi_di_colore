@@ -90,6 +90,16 @@ li {
 li strong {
 	color: var(--accent);
 }
+/* =========================
+   EVIDENZIATORE
+   ========================= */
+.marker {
+  background: linear-gradient(
+    transparent 60%,
+    #feb517 60%
+  );
+  font-weight: bold;
+}
 
 /* =========================
    CONTENITORE PRINCIPALE
