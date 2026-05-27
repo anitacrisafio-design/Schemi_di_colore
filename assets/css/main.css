@@ -179,9 +179,11 @@ section.conclusione {
 .contenuto-sezione {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 2em;
+	column-gap: 8em;
+	row-gap: 0.5em;
 	align-items: flex-start;
 }
+
 
 /* Layout verticali */
 .testo,
