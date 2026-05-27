@@ -285,7 +285,13 @@ iframe:hover {
 	box-shadow: 0 20px 40px lab(86.43% -0.91 86.79 / 0.2);
 }
 
-.sketch iframe,
+.sketch iframe{
+	width: 100%;
+	height: auto;
+	/* aspect-ratio: 1 / 1; */
+	min-height: 500px;
+	border-radius: var(--radius);
+}
 .sketch img {
 	width: 100%;
 	height: auto;
