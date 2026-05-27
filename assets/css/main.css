@@ -61,7 +61,7 @@ p {
    TITOLO PRINCIPALE
    ========================= */
 h1 {
-	font-size: 3em;
+	font-size: 3.6em;
 
 	background: linear-gradient(135deg, #fff 0%, #b0b0b0 100%);
 	-webkit-background-clip: text;
