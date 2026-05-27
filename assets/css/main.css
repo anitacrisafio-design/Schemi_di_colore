@@ -79,12 +79,12 @@ li {
 }
 
 ul {
-	margin: 1.5em 0;
+	margin: 2em 0;
 	padding-left: 2em;
 }
 
 li {
-	margin-bottom: 0.8em;
+	margin-bottom: 0em;
 }
 
 li strong {
@@ -131,10 +131,10 @@ section {
    ========================= */
 .conclusione {
 	border-top: 4px solid rgba(255, 213, 0, 0.4);
-	padding-top: 2em;
+	padding-top: 5em;
 	
 	background: rgba(255, 213, 0, 0.05);
-	border-bottom: 4px
+	border-bottom: 8px
 }
 
 /* La conclusione occupa tutta la larghezza */
@@ -147,6 +147,7 @@ section.conclusione {
 }
 
 .conclusione .titolo-sezione {
+	margin-bottom: 0;
 	color: rgba(255, 213, 0, 0.9);
 	font-size: 1.8em;
 }
@@ -167,9 +168,9 @@ section.conclusione {
    ========================= */
 .contenuto-sezione {
 	display: grid;
-	grid-template-columns: 1.2fr 1fr;
-	gap: 3em;
-	align-items: start;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.5em;
+	align-items: flex-start;
 }
 
 /* Layout verticali */
@@ -178,6 +179,13 @@ section.conclusione {
 .sidebar-left {
 	display: flex;
 	flex-direction: column;
+}
+
+/* Allinea gli sketch alla linea alta dei titoli */
+.sketch {
+	align-self: start;
+	margin-top: 0;
+	padding-top: 0;
 }
 
 /* Sticky text only */
@@ -189,13 +197,14 @@ section.conclusione {
 
 /* Sidebar accordion */
 .sidebar-left {
-	gap: 0.68em;
+	gap: 0.5em;
 }
 
 /* =========================
    TITOLI DI SEZIONE
    ========================= */
 .titolo-sezione {
+	margin-bottom: 0;
 	font-size: 2em;
 	color: var(--accent);
 	text-align: left;
@@ -262,7 +271,7 @@ iframe:hover {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 0.8em;
+	gap: 0.5em;
 
 	padding: 0.85em 1.02em;
 

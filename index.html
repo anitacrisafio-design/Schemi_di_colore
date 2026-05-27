@@ -93,7 +93,7 @@
 
 		<section>
 			<div class="sidebar-left">
-
+				
 				<div class="accordion-item">
 					<button class="accordion-button" data-accordion-key="codifica-arbitraria">La codifica arbitraria
 						<span class="accordion-icon">+</span></button>
@@ -131,7 +131,7 @@
 				</div>
 			</div>
 			<div class="contenuto-sezione">
-				<h4 class="titolo-sezione">LA RAPPRESENTAZIONE DEI COLORI</h4>
+				<h4 class="titolo-sezione">La rappresentazione dei colori</h4>
 				<div class="testo">
 					<p>
 						necessario sviluppare dei metodi capaci di definire con esattezza un colore specifico. <br>
@@ -145,39 +145,53 @@
 							calcolata</span>. <br>
 					</p>
 			
-				<div class="highlight-box">
-					<p>
-						Dal punto di vista matematico, non esiste una funzione che permetta di ricavare automaticamente
-						il codice dai dati fisici dell’oggetto rappresentato.<br>
-						<br> La relazione è del tipo:<br>
-						Oggetto→Codice scelto convenzionalmente<br>
-						<br>
-						Ad esempio:<br>
-						Rosso Pantone→PANTONE 186 C<br>
-						<br>
-						Il codice non deriva da un calcolo matematico, ma da una scelta definita in una tabella o
-						catalogo.<br>
-						<br>
+			
+			
+			
+		<div class="sketch">
+			<div class="accordion-item accordion-fullwidth">
+					<button class="accordion-button" data-accordion-key="codifica-arbitraria">
+						Approfondimento matematico <span class="accordion-icon">+</span>
+					</button>
+					<div class="accordion-content">
+						<div class="highlight-box">
+						<p>
+							Dal punto di vista matematico, non esiste una funzione che permetta di ricavare automaticamente
+							il codice dai dati fisici dell’oggetto rappresentato.<br>
+							<br> La relazione è del tipo:<br>
+							Oggetto→Codice scelto convenzionalmente<br>
+							<br>
+							Ad esempio:<br>
+							Rosso Pantone→PANTONE 186 C<br>
+							<br>
+							Il codice non deriva da un calcolo matematico, ma da una scelta definita in una tabella o
+							catalogo.<br>
+							<br>
 
-					</p>
-			</div>	
-				</div>
-				<div class="highlight-box">
-					<p>
-						
-						La codifica calcolata invece utilizza formule matematiche per rappresentare informazioni
-						attraverso valori numerici.<br>
-						Il codice dipende direttamente da grandezze misurabili.<br>
-						<br>
-						dove:
-						<li> C è il codice finale,</li>
-						<li>x sono le grandezze fisiche,</li>
-						<li>f è una funzione matematica.</li>
-					</p>
-					<br>
-					<img style="width:100%;" src="./assets/img/formula_RGB.png">
-				</div>
+						</p>
+						</div>	
+					</div>
 			</div>
+
+			<button class="accordion-button" data-accordion-key="codifica-calcolata">
+					Approfondimento matematico <span class="accordion-icon">+</span>
+				</button>
+				<div class="accordion-content">
+					<div class="highlight-box">
+						<p>
+							
+							La codifica calcolata invece utilizza formule matematiche per rappresentare informazioni
+							attraverso valori numerici.<br>
+							Il codice dipende direttamente da grandezze misurabili.<br>
+							<br>
+							dove:
+							<li> C è il codice finale,</li>
+							<li>x sono le grandezze fisiche,</li>
+							<li>f è una funzione matematica.</li>
+						</p>
+						<img style="width:100%;" src="./assets/img/grafico_gamut_RGB.png">
+						<br>
+					</div>
 		</section>
 		<!-- --------------------------------------------------------------------- -->
 		<section>
@@ -212,8 +226,8 @@
 				</div>
 			</div>
 			<div class="contenuto-sezione">
-				<h4 class="titolo-sezione">SPAZIO DI COLORE</h4>
-				<div class="testo sticky-text">
+				<h4 class="titolo-sezione">Spazio di colori</h4>
+				<div class="accordion-content>
 					<p>
 						Per comprendere meglio questo sistema bisogna introdurre il concetto di <span
 							class="accordion-link" data-target="modello-matematico">modello matematico</span> e <span
@@ -228,7 +242,7 @@
 					</p>
 				</div>
 				<div class="sketch">
-					<iframe scrolling=no frameborder=0 height=500 src="./assets/sketches/02_RGB/"></iframe>
+					<img style="max-width: ;" src="./assets/img/grafico_gamut_RGB.png">
 				</div>
 			</div>
 		</section>
@@ -298,7 +312,7 @@
 			</div>
 
 			<div class="contenuto-sezione">
-				<h4 class="titolo-sezione">MODELLI DI COLORE</h4>
+				<h4 class="titolo-sezione">Modelli di colore</h4>
 				<div class="testo">
 					<p>
 						Da questo concetto nasce il modello di colore. Un modello di colore è un sistema matematico
@@ -405,7 +419,7 @@
 			</div>
 
 			<div class="contenuto-sezione">
-				<h4 class="titolo-sezione">SISTEMI DI GESTIONE CROMATICA</h4>
+				<h4 class="titolo-sezione">Sistemi di gestione cromatica</h4>
 				<div class="testo">
 					<p>
 						Nonostante l’elevata precisione dei modelli matematici, uno dei principali problemi della
@@ -424,6 +438,7 @@
 						Un ruolo fondamentale è svolto anche dalla <span class="accordion-link"
 							data-target="calibrazione">calibrazione </span> dei dispositivi.
 					</p>
+				</div>
 
 					<div class="highlight-box">
 						<p>
@@ -435,11 +450,6 @@
 						</p>
 						<img style="width:100%;" src="./assets/img/formula_fattore_gamma.png">
 					</div>
-				</div>
-
-				<div class="sketch">
-					<iframe scrolling=no frameborder=0 width="100%" src="./assets/sketches/03_GAMMA/"></iframe>
-				</div>
 			</div>
 
 		</section>
@@ -492,7 +502,7 @@
 				</div>
 			</div>
 			<div class="contenuto-sezione">
-				<h4 class="titolo-sezione">SPAZIO DI COLORE PERCETTIVI</h4>
+				<h4 class="titolo-sezione">Spazio di colori percettivi</h4>
 				<div class="testo">
 					<p>
 						Un ulteriore sviluppo fondamentale nella rappresentazione dei colori riguarda gli <span
@@ -502,6 +512,7 @@
 						correction, fotografia, computer grafica, rendering e progettazione digitale avanzata.
 					</p>
 				</div>
+			<div class="sketch">
 				<div class="accordion-item accordion-fullwidth">
 					<button class="accordion-button" data-accordion-key="modello-vs-spazio">
 						Qualcosa in più su ICELAB <span class="accordion-icon">+</span>
@@ -534,8 +545,7 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="accordion-item accordion-fullwidth">
+				
 					<button class="accordion-button" data-accordion-key="modello-vs-spazio">
 						Qualcosa in più su OKLAB <span class="accordion-icon">+</span>
 					</button>
@@ -564,7 +574,6 @@
 							</p>
 						</div>
 					</div>
-				</div>
 			</div>
 		</section>
 		<!-- --------------------------------------------------------------------- -->
