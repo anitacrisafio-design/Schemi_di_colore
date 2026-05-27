@@ -289,8 +289,12 @@ iframe:hover {
 .sketch img {
 	width: 100%;
 	height: auto;
-	aspect-ratio: 1 / 1;
-	min-height: 500px;
+
+	max-height: 700px;
+
+	object-fit: contain;
+	display: block;
+
 	border-radius: var(--radius);
 }
 
