@@ -34,8 +34,8 @@
    ========================= */
 body {
 	margin: 0;
-	padding: 2em 3em;
-	min-height: 70vh;
+	padding: 2em 0em;
+	min-height: 90vh;
 
 	font: 400 1rem/1.4 "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 	color: var(--text);
@@ -79,7 +79,7 @@ li {
 }
 
 ul {
-	margin: 2em 0;
+	margin: 0em ;
 	padding-left: 2em;
 }
 
@@ -107,18 +107,20 @@ section {
 	display: grid;
 	grid-template-columns: 1fr 4fr;
 	margin-bottom: 4em;
-	padding-left: 5em;
-	padding-top: 0.5em;
+	padding-left: 2em;
+	padding-top: 0em;
 }
 
-header {
+/* filetto sotto al titolo */
+header { 
 	padding-bottom: 2em;
-	border-bottom: 2px solid rgba(255, 213, 0, 0.2);
+	border-bottom: 2px solid rgba(255, 213, 0, 0.2); 
 }
 
+/* spazio tra 1° e 2° colonna */
 section {
-	gap: 3em;
-	scroll-margin-top: 2em;
+	gap: 2em;
+	scroll-margin-top: 0em;
 }
 
 /* Variante con linea superiore */
@@ -131,10 +133,10 @@ section {
    ========================= */
 .conclusione {
 	border-top: 4px solid rgba(255, 213, 0, 0.4);
-	padding-top: 5em;
+	padding-top: 2em;
+	padding-bottom: 2em;
 	
 	background: rgba(255, 213, 0, 0.05);
-	border-bottom: 8px
 }
 
 /* La conclusione occupa tutta la larghezza */
@@ -153,7 +155,7 @@ section.conclusione {
 }
 
 .conclusione .testo {
-	width: 100%;
+	width: 100%;	
 	max-width: 100%;
 }
 
@@ -169,7 +171,7 @@ section.conclusione {
 .contenuto-sezione {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 0.5em;
+	gap: 2em;
 	align-items: flex-start;
 }
 
@@ -183,17 +185,17 @@ section.conclusione {
 
 /* Allinea gli sketch alla linea alta dei titoli */
 .sketch {
-	align-self: start;
-	margin-top: 0;
+	align-self: top;
+	margin-top: 3;
 	padding-top: 0;
 }
 
-/* Sticky text only */
+/* Sticky text only
 .testo.sticky-text {
 	position: sticky;
 	top: 6em;
 	align-self: start;
-}
+} */
 
 /* Sidebar accordion */
 .sidebar-left {
