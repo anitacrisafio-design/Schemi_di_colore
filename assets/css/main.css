@@ -131,10 +131,10 @@ section {
    ========================= */
 .conclusione {
 	border-top: 4px solid rgba(255, 213, 0, 0.4);
-	padding-top: 2em;
+	padding-top: 5em;
 	
 	background: rgba(255, 213, 0, 0.05);
-	border-bottom: 4px
+	border-bottom: 8px
 }
 
 /* La conclusione occupa tutta la larghezza */
@@ -197,7 +197,7 @@ section.conclusione {
 
 /* Sidebar accordion */
 .sidebar-left {
-	gap: 0.68em;
+	gap: 0.5em;
 }
 
 /* =========================
@@ -271,7 +271,7 @@ iframe:hover {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 0.8em;
+	gap: 0.5em;
 
 	padding: 0.85em 1.02em;
 
