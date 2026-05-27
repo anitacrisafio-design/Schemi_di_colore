@@ -57,6 +57,31 @@
 					}
 				});
 			});
+
+			// Build Table of Contents from H4.titolo-sezione
+			const tocEl = document.getElementById('toc');
+			if (tocEl) {
+				const ul = tocEl.querySelector('ul');
+				function slugify(text) {
+					return text.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+				}
+				document.querySelectorAll('h4.titolo-sezione').forEach(h => {
+					if (!h.id) h.id = slugify(h.textContent);
+					const id = h.id;
+					const li = document.createElement('li');
+					const a = document.createElement('a');
+					a.href = '#' + id;
+					a.textContent = h.textContent;
+					a.className = 'toc-link';
+					a.addEventListener('click', function (e) {
+						e.preventDefault();
+						document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+						history.replaceState(null, '', '#' + id);
+					});
+					li.appendChild(a);
+					ul.appendChild(li);
+				});
+			}
 		});
 	</script>
 
@@ -86,6 +111,11 @@
 						tonalità.
 					</p>
 				</div>
+
+				<nav id="toc" aria-label="Indice articoli">
+					<h3>Indice</h3>
+					<ul></ul>
+				</nav>
 		</header>
 
 
