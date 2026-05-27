@@ -183,12 +183,12 @@ section.conclusione {
 	flex-direction: column;
 }
 
-/* Allinea gli sketch alla linea alta dei titoli */
+/* Allinea gli sketch alla linea alta dei titoli
 .sketch {
 	align-self: top;
 	margin-top: 3;
 	padding-top: 0;
-}
+} */
 
 /* Sticky text only
 .testo.sticky-text {
@@ -197,9 +197,9 @@ section.conclusione {
 	align-self: start;
 } */
 
-/* Sidebar accordion */
+/* Sidebar accordion -> box a sinistra*/
 .sidebar-left {
-	gap: 0.5em;
+	gap: 0.8em;
 }
 
 /* =========================
@@ -229,12 +229,12 @@ iframe {
 	border-radius: var(--radius);
 	overflow: hidden;
 
-	box-shadow: 0 10px 40px rgba(255, 213, 0, 0.1);
+	box-shadow: 0 5px 40px rgba(255, 213, 0, 0.1);
 	transition: box-shadow var(--transition);
 }
 
 iframe:hover {
-	box-shadow: 0 20px 60px lab(86.43% -0.91 86.79 / 0.2);
+	box-shadow: 0 20px 40px lab(86.43% -0.91 86.79 / 0.2);
 }
 
 .sketch iframe,
@@ -242,16 +242,17 @@ iframe:hover {
 	width: 100%;
 	height: auto;
 	aspect-ratio: 1 / 1;
-	min-height: 400px;
+	min-height: 500px;
 	border-radius: var(--radius);
 }
 
 /* =========================
-   ACCORDION
+   ACCORDION 
    ========================= */
+
+/* -> elementi grafici nel box a sinista */
 .accordion-item {
-	margin: 0.1em 0;
-	padding: 0.68em 0.85em;
+	padding: 0.85em 0.85em;
 	border-radius: 8.5px;
 	background: rgba(255, 255, 255, 0.06);
 }
@@ -266,7 +267,7 @@ iframe:hover {
 	border-left-color: rgba(255, 255, 255, 0.18);
 	box-shadow: none;
 }
-
+/* -> elementi grafici nel box a sinista */
 .accordion-button {
 	width: 100%;
 
@@ -275,7 +276,7 @@ iframe:hover {
 	justify-content: space-between;
 	gap: 0.5em;
 
-	padding: 0.85em 1.02em;
+	padding: 1em 1em;
 
 	border-radius: 5px;
 	border: 2px solid var(--accent-border);
@@ -337,7 +338,7 @@ iframe:hover {
 }
 
 /* =========================
-   HIGHLIGHT BOX
+   HIGHLIGHT BOX -> box gialli
    ========================= */
 .highlight-box {
 	margin: 1em 0;
@@ -346,13 +347,11 @@ iframe:hover {
 	background: rgba(255, 213, 0, 0.08);
 	border-left: 5px solid var(--accent);
 	border-radius: 6px;
-
-	box-shadow: 0 1px 1px rgba(255, 255, 0, 0.05);
 }
 
 .highlight-box p,
 .highlight-box li {
-	margin: 0;
+	margin: 9;
 }
 
 /* =========================
@@ -368,8 +367,8 @@ iframe:hover {
 	height: 50px;
 
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	align-items: left;
+	justify-content: left;
 
 	border-radius: 50%;
 	border: 2px solid var(--accent-border);
@@ -400,7 +399,7 @@ iframe:hover {
 
 	background: linear-gradient(
 		135deg,
-		rgba(20, 20, 20, 0.95) 0%,
+		rgba(189, 33, 33, 0.95) 0%,
 		rgba(30, 30, 30, 0.95) 100%
 	);
 
