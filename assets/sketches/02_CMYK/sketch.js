@@ -245,7 +245,7 @@ function drawColorPreview(rgb) {
 
   fill(rgb.r, rgb.g, rgb.b);
 
-  rect(370, 20, 90, 90, 16);
+  rect(350, 20, 90, 90, 16);
 }
 
 /* =========================
@@ -271,7 +271,7 @@ function drawInstructions() {
 
   fill(180);
 
-  textSize(12);
+  textSize(13.5);
 
   textAlign(LEFT);
 
@@ -279,7 +279,7 @@ function drawInstructions() {
     "Puoi cambiare colore scrivendo i valori CMYK oppure tenendo premuto SPACE mentre muovi il mouse nel quadrato.",
     20,
     105,
-    200
+    250
   );
 }
 /* =========================
