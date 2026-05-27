@@ -16,8 +16,8 @@ let currentHSV = {
 // Movimento mouse
 let movePoint = false;
 
-// Raggio wheel
-const wheelRadius = 170;
+// Raggio wheel (ridotto del 10% due volte)
+const wheelRadius = 138; // 153 * 0.9
 
 // Densità punti
 const step = 14;
@@ -27,7 +27,7 @@ const step = 14;
    ========================= */
 function setup() {
 
-	createCanvas(560, 560);
+	createCanvas(500, 500);
 
 	colorMode(HSB, 360, 100, 100);
 
@@ -38,7 +38,7 @@ function setup() {
 
 		let input = createInput(value);
 
-		styleInput(input, 20 + i * 90);
+		styleInput(input, 20 + i * 80);
 
 		inputs.push(input);
 	});
@@ -49,7 +49,7 @@ function setup() {
    ========================= */
 function draw() {
 
-	background(8);
+	background('black');
 
 	drawPanel();
 
@@ -73,7 +73,10 @@ function draw() {
 
 	push();
 
-	translate(width / 2, height / 2 + 30);
+	// Align composition with 02_RGB (slight vertical offset + scale)
+	translate(width / 2, height / 2 + 45);
+
+	scale(0.90);
 
 	drawHSVPoints();
 
@@ -97,7 +100,7 @@ function styleInput(input, x) {
 
 	input.position(x, 20);
 
-	input.size(60);
+	input.size(50);
 
 	input.style('background', '#1e1e1e');
 	input.style('color', 'white');
@@ -114,9 +117,9 @@ function drawPanel() {
 
 	noStroke();
 
-	fill(18);
+	fill(11);
 
-	rect(0, 0, width, height);
+	rect(0, 0, 600, 600);
 }
 
 /* =========================
@@ -163,11 +166,11 @@ function drawHSVPoints() {
 	// Bordo
 	noFill();
 
-	stroke(255, 40);
+	stroke(35);
 
 	strokeWeight(2);
 
-	circle(0, 0, wheelRadius * 2);
+	circle(0, 0, wheelRadius * 1.95);
 }
 
 /* =========================
@@ -184,16 +187,16 @@ function drawHSVGuide() {
 	// =====================
 
 	let labels = [
-		{ a: 0, txt: "0°" },
-		{ a: 60, txt: "60°" },
-		{ a: 120, txt: "120°" },
-		{ a: 180, txt: "180°" },
-		{ a: 240, txt: "240°" },
-		{ a: 300, txt: "300°" }
+		// { a: 0, txt: "0°" },
+		// { a: 60, txt: "60°" },
+		// { a: 120, txt: "120°" },
+		// { a: 180, txt: "180°" },
+		// { a: 240, txt: "240°" },
+		// { a: 300, txt: "300°" }
 	];
 
 	stroke(255, 25);
-	strokeWeight(1);
+	strokeWeight(0.5);
 
 	labels.forEach(l => {
 
@@ -341,8 +344,8 @@ function drawColorPoint() {
    ========================= */
 function updateHSVFromMouse() {
 
-	let mx = mouseX - width / 2;
-	let my = mouseY - (height / 2 + 30);
+	let mx = (mouseX - width / 2) / 0.82;
+	let my = (mouseY - (height / 2 + 20)) / 0.82;
 
 	let d = dist(0, 0, mx, my);
 
@@ -378,7 +381,7 @@ function drawPreview() {
 		currentHSV.v
 	);
 
-	rect(410, 20, 110, 110, 18);
+	rect(330, 20, 90, 90, 16);
 }
 
 /* =========================
@@ -392,7 +395,7 @@ function drawLabels() {
 
 	["H", "S", "V"].forEach((label, i) => {
 
-		text(label, 48 + i * 90, 76);
+		text(label, 42 + i * 80, 75);
 	});
 
 	drawInstructions();
@@ -403,22 +406,16 @@ function drawLabels() {
    ========================= */
 function drawInstructions() {
 
-	fill(180);
+	fill(75);
 
 	textSize(12);
 
 	textAlign(LEFT);
-
 	text(
-		"Ogni pallino rappresenta un colore HSV.\nHue = direzione | Saturation = distanza | Value = luminosità.Tieni premuto SPACE e muovi il mouse nella ruota per cambiare colore.",
-		20,
-		105
-	);
-
-	text(
-		"Tieni premuto SPACE e muovi il mouse nella ruota per cambiare colore.",
-		20,
-		145
+		"Ogni pallino rappresenta un colore HSV. Hue = direzione | Saturation = distanza | Value = luminosità.\nTieni premuto SPACE e muovi il mouse nella ruota per cambiare colore.",
+		25,
+		96,
+		200
 	);
 }
 

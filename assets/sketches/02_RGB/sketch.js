@@ -115,7 +115,7 @@ function drawPanel() {
 
 	noStroke();
 
-	fill(18);
+	fill(25);
 
 	rect(0, 0, 600, 600);
 }
@@ -125,7 +125,7 @@ function drawPanel() {
    ========================= */
 function drawTriangle() {
 
-	strokeWeight(3);
+	strokeWeight(2);
 
 	stroke(255, 70);
 

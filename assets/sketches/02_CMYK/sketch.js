@@ -24,7 +24,7 @@ const squareSize = 260;
    ========================= */
 function setup() {
 
-  createCanvas(500, 500);
+  createCanvas(600, 600);
 
   textFont('Arial');
 
@@ -32,18 +32,19 @@ function setup() {
 
     let input = createInput(value);
 
-    styleInput(input, 20 + i * 80);
+    styleInput(input, 20 + i * 75);
 
     inputs.push(input);
   });
 }
+
 
 /* =========================
    DRAW
    ========================= */
 function draw() {
 
-  background('black');
+  background(8);
 
   // Se NON stiamo usando il mouse
   // usa i valori degli input
@@ -77,9 +78,9 @@ function draw() {
 
   push();
 
-  translate(width / 2, height / 2 + 30);
+  translate(230, 300, -40);
 
-  scale(0.72);
+  scale(0.82);
 
   drawCMYKSquare();
 
@@ -104,11 +105,11 @@ function styleInput(input, x) {
 
   input.position(x, 20);
 
-  input.size(50);
+  input.size(45);
 
-  input.style('background', 'black');
+  input.style('background', '#1e1e1e');
   input.style('color', 'white');
-  input.style('border', '1px solid #000000');
+  input.style('border', '1px solid #444');
   input.style('border-radius', '8px');
   input.style('padding', '8px');
   input.style('font-size', '16px');
@@ -121,9 +122,9 @@ function drawPanel() {
 
   noStroke();
 
-  fill(18);
+  fill(25);
 
-  rect(10, 10, 480, 480, 24);
+  rect(0, 0, 600, 600);
 }
 
 /* =========================
@@ -139,7 +140,7 @@ function drawCMYKSquare() {
   // Bordo quadrato
   stroke(255, 70);
 
-  strokeWeight(3);
+  strokeWeight(2);
 
   noFill();
 
@@ -200,8 +201,8 @@ function drawColorPoint(c, m, y, k) {
 function updateCMYKFromMouse() {
 
   // Coordinate mouse nel quadrato
-  let mx = (mouseX - width / 2) / 0.72;
-  let my = (mouseY - (height / 2 + 30)) / 0.72;
+  let mx = (mouseX - width / 2) / 0.82;
+  let my = (mouseY - (height / 2 + 20)) / 0.82;
 
   // Limiti quadrato
   let half = squareSize / 2;
@@ -244,7 +245,7 @@ function drawColorPreview(rgb) {
 
   fill(rgb.r, rgb.g, rgb.b);
 
-  rect(390, 30, 80, 80, 16);
+  rect(320, 20, 90, 90, 16);
 }
 
 /* =========================
@@ -258,13 +259,13 @@ function drawLabels() {
 
   ["C", "M", "Y", "K"].forEach((label, i) => {
 
-    text(label, 42 + i * 80, 75);
+    text(label, 42 + i * 70, 75);
   });
 }
 /* =========================
    DRAW INSTRUCTIONS
    =========================
-   Disegna il testo istruzioni sotto RGB.
+   Disegna il testo istruzioni per CMYK.
 */
 function drawInstructions() {
 
@@ -275,7 +276,7 @@ function drawInstructions() {
   textAlign(LEFT);
 
   text(
-    "Puoi cambiare colore scrivendo i valori CMYK oppure tenendo premuto SPACE mentre muovi il mouse nel triangolo (per farlo seleziona il LAB).",
+    "Puoi cambiare colore scrivendo i valori CMYK oppure tenendo premuto SPACE mentre muovi il mouse nel quadrato.",
     20,
     105,
     200
