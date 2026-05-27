@@ -233,7 +233,7 @@ function drawColorPreview(r, g, b) {
 
 	fill(r, g, b);
 
-	rect(380, 20, 90, 90, 16);
+	rect(350, 20, 90, 90, 16);
 }
 
 /* =========================
@@ -259,7 +259,7 @@ function drawInstructions() {
 
 	fill(180);
 
-	textSize(12);
+	textSize(13.5);
 
 	textAlign(LEFT);
 
@@ -267,7 +267,7 @@ function drawInstructions() {
 		"Puoi cambiare colore scrivendo i valori RGB oppure tenendo premuto SPACE mentre muovi il mouse nel triangolo (per farlo seleziona il LAB).",
 		20,
 		110,
-		200
+		250
 	);
 }
 /* =========================
