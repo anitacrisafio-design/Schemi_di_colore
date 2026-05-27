@@ -338,7 +338,7 @@ iframe:hover {
 }
 
 /* =========================
-   HIGHLIGHT BOX
+   HIGHLIGHT BOX -> box gialli
    ========================= */
 .highlight-box {
 	margin: 1em 0;
@@ -347,13 +347,11 @@ iframe:hover {
 	background: rgba(255, 213, 0, 0.08);
 	border-left: 5px solid var(--accent);
 	border-radius: 6px;
-
-	box-shadow: 0 1px 1px rgba(255, 255, 0, 0.05);
 }
 
 .highlight-box p,
 .highlight-box li {
-	margin: 0;
+	margin: 9;
 }
 
 /* =========================
@@ -369,8 +367,8 @@ iframe:hover {
 	height: 50px;
 
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	align-items: left;
+	justify-content: left;
 
 	border-radius: 50%;
 	border: 2px solid var(--accent-border);
@@ -401,7 +399,7 @@ iframe:hover {
 
 	background: linear-gradient(
 		135deg,
-		rgba(20, 20, 20, 0.95) 0%,
+		rgba(189, 33, 33, 0.95) 0%,
 		rgba(30, 30, 30, 0.95) 100%
 	);
 
